@@ -10,6 +10,11 @@
         content="Mini App demo for a pilates studio: schedule, directions, trainers, prices, FAQ, location and booking request." />
 
     <link rel="stylesheet" href="/static/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -34,7 +39,7 @@
             <div class="hero-grid">
                 <div class="hero-copy">
                     <div class="eyebrow" data-i18n="heroKicker">Pilates & mindful movement</div>
-                    <h1 data-i18n="heroTitle">Баланс. Сила. Лёгкость.</h1>
+                    <h1 class="hero-soft-title" data-i18n="heroTitle">Баланс.<br>Мягкая сила.<br>Лёгкость движения.</h1>
                     <p data-i18n="heroText">
                         Студия пилатеса и осознанного движения для тела и души.
                     </p>
@@ -377,12 +382,35 @@
     <button class="floating-trial open-booking" data-i18n="floatingTrial">Записаться на пробное</button>
 
     <nav class="bottom-nav">
-        <a href="#home">🏠<span data-i18n="navHome">Главная</span></a>
-        <a href="#schedule">📅<span data-i18n="navSchedule">Расписание</span></a>
-        <a href="#trainers">👤<span data-i18n="navTrainers">Тренеры</span></a>
-        <a href="#prices">🏷️<span data-i18n="navPrices">Цены</span></a>
-        <a href="#faq">❔<span>FAQ</span></a>
-        <a href="#location">📍<span data-i18n="navContacts">Контакты</span></a>
+        <a href="#home" class="nav-item">
+            <span class="nav-circle">Г</span>
+            <span class="nav-label" data-i18n="navHome">Главная</span>
+        </a>
+
+        <a href="#schedule" class="nav-item">
+            <span class="nav-circle">Р</span>
+            <span class="nav-label" data-i18n="navSchedule">Расписание</span>
+        </a>
+
+        <a href="#trainers" class="nav-item">
+            <span class="nav-circle">Т</span>
+            <span class="nav-label" data-i18n="navTrainers">Тренеры</span>
+        </a>
+
+        <a href="#prices" class="nav-item">
+            <span class="nav-circle">Ц</span>
+            <span class="nav-label" data-i18n="navPrices">Цены</span>
+        </a>
+
+        <a href="#faq" class="nav-item">
+            <span class="nav-circle">F</span>
+            <span class="nav-label">FAQ</span>
+        </a>
+
+        <a href="#location" class="nav-item">
+            <span class="nav-circle">К</span>
+            <span class="nav-label" data-i18n="navContacts">Контакты</span>
+        </a>
     </nav>
 
     <div class="modal" id="bookingModal">

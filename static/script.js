@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const translations = {
         ru: {
             heroKicker: "Pilates & mindful movement",
-            heroTitle: "Баланс. Сила. Лёгкость.",
+            heroTitle: "Баланс.\nМягкая сила.\nЛёгкость движения.",
             heroText: "Студия пилатеса и осознанного движения для тела и души.",
             trialBtn: "Записаться на пробное занятие",
             consultBtn: "Получить консультацию",
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         en: {
             heroKicker: "Pilates & mindful movement",
-            heroTitle: "Balance. Strength. Lightness.",
+            heroTitle: "Balance.\nSoft strength.\nEase of movement.",
             heroText: "A pilates and mindful movement studio for body and soul.",
             trialBtn: "Book a trial class",
             consultBtn: "Get a consultation",
