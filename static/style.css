@@ -851,12 +851,22 @@ details p {
     border-color: transparent !important;
 }
 
-.hidden-date-input {
+.calendar-chip-label {
+    position: relative;
+    display: block;
+}
+
+.date-input-overlay {
     position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     opacity: 0;
-    pointer-events: none;
-    width: 1px;
-    height: 1px;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 3;
 }
 
 .time-chips {

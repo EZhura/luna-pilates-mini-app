@@ -329,14 +329,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (customDateRadio && customDate && calendarChip) {
-        calendarChip.addEventListener("click", () => {
+        customDate.addEventListener("focus", () => {
             customDateRadio.checked = true;
+        });
 
-            if (customDate.showPicker) {
-                customDate.showPicker();
-            } else {
-                customDate.click();
-            }
+        customDate.addEventListener("click", () => {
+            customDateRadio.checked = true;
         });
 
         customDate.addEventListener("change", () => {
@@ -349,9 +347,9 @@ document.addEventListener("DOMContentLoaded", function () {
             customDateRadio.checked = true;
 
             calendarChip.innerHTML = `
-        <b>${formatted.day}</b>
-        <small>${formatted.date}</small>
-      `;
+    <b>${formatted.day}</b>
+    <small>${formatted.date}</small>
+    `;
         });
     }
 
