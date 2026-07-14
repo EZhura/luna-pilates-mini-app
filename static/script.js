@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const translations = {
         ru: {
             customDateLabel: "Выберите дату в календаре",
+            calendarFieldTitle: "Календарь",
+            calendarFieldHint: "Нажмите, чтобы выбрать дату",
             heroKicker: "Pilates & mindful movement",
             heroTitle: "Баланс.\nМягкая сила.\nЛёгкость движения.",
             heroText: "Студия пилатеса и осознанного движения для тела и души.",
@@ -113,7 +115,9 @@ document.addEventListener("DOMContentLoaded", function () {
         },
 
         en: {
-            customDateLabel: "Choose a date in the calendar",
+
+            calendarFieldTitle: "Calendar",
+            calendarFieldHint: "Tap to choose a date",
             heroKicker: "Pilates & mindful movement",
             heroTitle: "Balance.\nSoft strength.\nEase of movement.",
             heroText: "A pilates and mindful movement studio for body and soul.",
@@ -359,9 +363,23 @@ document.addEventListener("DOMContentLoaded", function () {
             customDateRadio.checked = true;
 
             calendarChip.innerHTML = `
-      <b>${formatted.day}</b>
-      <small>${formatted.date}</small>
-    `;
+    <b>${formatted.day}</b>
+    <small>${formatted.date}</small>
+  `;
+
+            const calendarDateTitle = document.getElementById("calendarDateTitle");
+            const calendarDateHint = document.getElementById("calendarDateHint");
+
+            if (calendarDateTitle) {
+                calendarDateTitle.textContent = `${formatted.day}, ${formatted.date}`;
+            }
+
+            if (calendarDateHint) {
+                calendarDateHint.textContent =
+                    currentLang === "ru" ?
+                    "Дата выбрана — нажмите, чтобы изменить" :
+                    "Date selected — tap to change";
+            }
         });
 
         document.querySelectorAll('input[name="date"]').forEach((dateInput) => {
