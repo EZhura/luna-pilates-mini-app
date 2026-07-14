@@ -93,7 +93,7 @@ def booking_request():
 <b>Telegram / WhatsApp:</b> {contact}
 
 <b>Direction:</b> {direction or "Not selected"}
-<b>Trainer:</b> {trainer or "Not selected"}
+<b>Instructor:</b> {trainer or "Not selected"}
 <b>Date:</b> {date or "Not selected"}
 <b>Time:</b> {time or "Not selected"}
 <b>Goal:</b> {goal or "Not selected"}
@@ -132,6 +132,7 @@ def booking_request():
             "message": "Thank you! Your request has been sent.",
         }
     )
+
 
 @app.route("/api/consultation", methods=["POST"])
 def consultation_request():
@@ -192,6 +193,7 @@ def consultation_request():
         }
     )
 
+
 @app.route("/telegram/webhook", methods=["POST"])
 def telegram_webhook():
     update = request.get_json(silent=True) or {}
@@ -213,7 +215,7 @@ This is a demo Mini App concept for a pilates / wellness studio.
 Inside you can view:
 • directions
 • schedule
-• trainers
+• instructors
 • prices
 • FAQ
 • location

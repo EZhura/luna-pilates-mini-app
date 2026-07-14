@@ -7,14 +7,15 @@
 
     <title>Luna Pilates — Mini App Demo</title>
     <meta name="description"
-        content="Mini App demo for a pilates studio: schedule, directions, trainers, prices, FAQ, location and booking request." />
+        content="Mini App demo for a pilates studio: schedule, directions, instructors, prices, FAQ, location and booking request." />
 
-    <link rel="stylesheet" href="/static/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/style.css" />
 </head>
 
 <body>
@@ -39,7 +40,11 @@
             <div class="hero-grid">
                 <div class="hero-copy">
                     <div class="eyebrow" data-i18n="heroKicker">Pilates & mindful movement</div>
-                    <h1 class="hero-soft-title" data-i18n="heroTitle">Баланс.<br>Мягкая сила.<br>Лёгкость движения.</h1>
+
+                    <h1 class="hero-soft-title" data-i18n="heroTitle">Баланс.
+                        Мягкая сила.
+                        Лёгкость движения.</h1>
+
                     <p data-i18n="heroText">
                         Студия пилатеса и осознанного движения для тела и души.
                     </p>
@@ -141,18 +146,18 @@
                             <h3>Reformer Pilates</h3>
                             <p data-i18n="reformerText">Работа на оборудовании для глубокой проработки мышц, улучшения
                                 осанки и силы.</p>
+
                             <details class="direction-details">
                                 <summary data-i18n="moreBtn">Подробнее</summary>
                                 <p data-i18n="reformerMore">
-                                    Reformer Pilates подходит тем, кто хочет укрепить глубокие мышцы, улучшить
-                                    осанку и научиться точнее контролировать движение. Занятие проходит на
-                                    специальном оборудовании с регулируемым сопротивлением.
+                                    Reformer Pilates подходит тем, кто хочет укрепить глубокие мышцы, улучшить осанку и
+                                    научиться точнее контролировать движение. Занятие проходит на специальном
+                                    оборудовании с регулируемым сопротивлением.
                                 </p>
                             </details>
 
                             <button class="link-btn open-booking" data-direction="Reformer Pilates"
                                 data-i18n="bookBtn">Записаться</button>
-
                         </div>
                     </article>
 
@@ -163,6 +168,7 @@
                             <h3>Mat Pilates</h3>
                             <p data-i18n="matText">Классический пилатес на коврике для гибкости, баланса и контроля
                                 движений.</p>
+
                             <details class="direction-details">
                                 <summary data-i18n="moreBtn">Подробнее</summary>
                                 <p data-i18n="matMore">
@@ -173,7 +179,6 @@
 
                             <button class="link-btn open-booking" data-direction="Mat Pilates"
                                 data-i18n="bookBtn">Записаться</button>
-
                         </div>
                     </article>
 
@@ -184,6 +189,7 @@
                             <h3>Stretch & Mobility</h3>
                             <p data-i18n="stretchText">Мягкая растяжка, мобильность, восстановление и снятие напряжения.
                             </p>
+
                             <details class="direction-details">
                                 <summary data-i18n="moreBtn">Подробнее</summary>
                                 <p data-i18n="stretchMore">
@@ -194,7 +200,6 @@
 
                             <button class="link-btn open-booking" data-direction="Stretch & Mobility"
                                 data-i18n="bookBtn">Записаться</button>
-
                         </div>
                     </article>
                 </div>
@@ -208,7 +213,7 @@
             <section id="trainers" class="section">
                 <div class="section-title">
                     <span data-i18n="trainersKicker">Instructors</span>
-                    <h2 data-i18n="trainersTitle">Выбрать своего тренера</h2>
+                    <h2 data-i18n="trainersTitle">Выбрать своего инструктора</h2>
                     <p data-i18n="trainersText">Наши инструкторы будут рады помочь в достижении ваших целей.</p>
                 </div>
 
@@ -288,7 +293,7 @@
                     <article class="price-card">
                         <h3 data-i18n="privatePriceTitle">Индивидуальная тренировка</h3>
                         <div class="price">130 ₾</div>
-                        <p data-i18n="privatePriceText">Персональная сессия с instructor.</p>
+                        <p data-i18n="privatePriceText">Персональная сессия с инструктором.</p>
                         <button class="btn btn-small open-booking" data-i18n="bookBtn">Записаться</button>
                     </article>
                 </div>
@@ -330,7 +335,7 @@
                     <details>
                         <summary data-i18n="faq1q">Подойдёт ли пилатес новичкам?</summary>
                         <p data-i18n="faq1a">Да. Для первого занятия лучше выбрать Mat Pilates Beginner или пробное
-                            занятие, чтобы instructor подобрал комфортную нагрузку.</p>
+                            занятие, чтобы инструктор подобрал комфортную нагрузку.</p>
                     </details>
 
                     <details>
@@ -377,8 +382,8 @@
                     </details>
 
                     <details>
-                        <summary data-i18n="faq9q">Можно ли выбрать тренера?</summary>
-                        <p data-i18n="faq9a">Да, клиент может выбрать instructor по направлению, опыту и цели занятия.
+                        <summary data-i18n="faq9q">Можно ли выбрать инструктора?</summary>
+                        <p data-i18n="faq9a">Да, клиент может выбрать инструктора по направлению, опыту и цели занятия.
                         </p>
                     </details>
 
@@ -448,7 +453,7 @@
                 <img src="/static/images/logo.png" alt="Luna Pilates logo" />
                 <div>
                     <h2 data-i18n="bookingTitle">Запись на занятие</h2>
-                    <p data-i18n="bookingSubtitle">Выберите направление, тренера и удобное время.</p>
+                    <p data-i18n="bookingSubtitle">Выберите направление, инструктора и удобное время.</p>
                 </div>
             </div>
 
@@ -466,7 +471,7 @@
                 </div>
 
                 <div class="form-step">
-                    <h3 data-i18n="stepTrainer">2. Выберите тренера</h3>
+                    <h3 data-i18n="stepTrainer">2. Выберите инструктора</h3>
                     <select name="trainer">
                         <option value="Анна">Анна — Reformer / posture</option>
                         <option value="София">София — Mat / stretch</option>
@@ -475,52 +480,88 @@
                     </select>
                 </div>
 
-                <div class="booking-step">
-                    <h3>3. Выберите дату и время</h3>
+                <div class="form-step">
+                    <h3 data-i18n="stepDate">3. Выберите дату и время</h3>
 
-                    <div class="date-grid">
-                        <button class="date-chip active" type="button">
-                            <span>Пн</span>
-                            <small>19 мая</small>
-                        </button>
+                    <div class="date-chips">
+                        <label>
+                            <input type="radio" name="date" value="Monday, 19 May" />
+                            <span>
+                                <b>Пн</b>
+                                <small>19 мая</small>
+                            </span>
+                        </label>
 
-                        <button class="date-chip" type="button">
-                            <span>Вт</span>
-                            <small>20 мая</small>
-                        </button>
+                        <label>
+                            <input type="radio" name="date" value="Tuesday, 20 May" />
+                            <span>
+                                <b>Вт</b>
+                                <small>20 мая</small>
+                            </span>
+                        </label>
 
-                        <button class="date-chip" type="button">
-                            <span>Ср</span>
-                            <small>21 мая</small>
-                        </button>
+                        <label>
+                            <input type="radio" name="date" value="Wednesday, 21 May" checked />
+                            <span>
+                                <b>Ср</b>
+                                <small>21 мая</small>
+                            </span>
+                        </label>
 
-                        <button class="date-chip" type="button">
-                            <span>Чт</span>
-                            <small>22 мая</small>
-                        </button>
+                        <label>
+                            <input type="radio" name="date" value="Thursday, 22 May" />
+                            <span>
+                                <b>Чт</b>
+                                <small>22 мая</small>
+                            </span>
+                        </label>
 
-                        <button class="date-chip" type="button">
-                            <span>Пт</span>
-                            <small>23 мая</small>
-                        </button>
+                        <label>
+                            <input type="radio" name="date" value="Friday, 23 May" />
+                            <span>
+                                <b>Пт</b>
+                                <small>23 мая</small>
+                            </span>
+                        </label>
 
-                        <button class="date-chip date-chip-alt open-calendar" type="button">
-                            <span>Выбрать</span>
-                            <small>другую дату</small>
-                        </button>
+                        <label class="calendar-chip-label">
+                            <input type="radio" name="date" value="custom" id="customDateRadio" />
+                            <span class="calendar-chip" id="calendarChip">
+                                <b data-i18n="calendarShort">Выбрать</b>
+                                <small data-i18n="calendarSmall">другую дату</small>
+                            </span>
+                        </label>
                     </div>
 
-                    <input type="date" id="customDatePicker" class="hidden-date-picker" />
+                    <input type="date" name="customDate" id="customDate" class="hidden-date-input" />
 
-                    <div class="time-grid">
-                        <button class="time-chip active" type="button">09:00</button>
-                        <button class="time-chip" type="button">10:30</button>
-                        <button class="time-chip" type="button">12:00</button>
-                        <button class="time-chip" type="button">18:30</button>
-                        <button class="time-chip" type="button">19:30</button>
+                    <div class="time-chips">
+                        <label>
+                            <input type="radio" name="time" value="09:00" checked />
+                            <span>09:00</span>
+                        </label>
+
+                        <label>
+                            <input type="radio" name="time" value="10:30" />
+                            <span>10:30</span>
+                        </label>
+
+                        <label>
+                            <input type="radio" name="time" value="12:00" />
+                            <span>12:00</span>
+                        </label>
+
+                        <label>
+                            <input type="radio" name="time" value="18:30" />
+                            <span>18:30</span>
+                        </label>
+
+                        <label>
+                            <input type="radio" name="time" value="19:30" />
+                            <span>19:30</span>
+                        </label>
                     </div>
                 </div>
-
 
                 <div class="form-grid">
                     <label>
@@ -538,7 +579,9 @@
                         <input type="text" name="contact" placeholder="@username или номер" required />
                     </label>
                 </div>
+
                 <div class="goal-title" data-i18n="goalTitle">Что бы вы хотели улучшить?</div>
+
                 <div class="goal-row">
                     <label><input type="radio" name="goal" value="Для осанки" checked /> <span
                             data-i18n="goalPosture">для осанки</span></label>
@@ -576,8 +619,8 @@
                 <img src="/static/images/logo.png" alt="Luna Pilates logo" />
                 <div>
                     <h2 data-i18n="consultationTitle">Задайте интересующий вас вопрос</h2>
-                    <p data-i18n="consultationSubtitle">Администратор поможет выбрать направление, тренера или удобное
-                        время.</p>
+                    <p data-i18n="consultationSubtitle">Администратор поможет выбрать направление, инструктора или
+                        удобное время.</p>
                 </div>
             </div>
 

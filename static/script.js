@@ -8,17 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const translations = {
         ru: {
-            consultationTitle: "Задайте интересующий вас вопрос",
-            consultationSubtitle: "Администратор поможет выбрать направление, тренера или удобное время.",
-            questionLabel: "Ваш вопрос",
-            sendQuestionBtn: "Отправить вопрос",
-            consultationSuccess: "Спасибо! Ваш вопрос отправлен.",
-            moreBtn: "Подробнее",
-            reformerMore: "Reformer Pilates подходит тем, кто хочет укрепить глубокие мышцы, улучшить осанку и научиться точнее контролировать движение. Занятие проходит на специальном оборудовании с регулируемым сопротивлением.",
-            matMore: "Mat Pilates — хороший старт для новичков. Занятия помогают развивать гибкость, баланс, стабильность корпуса и мягко укреплять тело без перегрузки.",
-            stretchMore: "Stretch & Mobility помогает снять напряжение, улучшить подвижность суставов и восстановиться после нагрузки. Подходит для мягкой практики и anti-stress формата.",
-            calendarBtn: "Выбрать другую дату",
-            goalTitle: "Что бы вы хотели улучшить?",
             heroKicker: "Pilates & mindful movement",
             heroTitle: "Баланс.\nМягкая сила.\nЛёгкость движения.",
             heroText: "Студия пилатеса и осознанного движения для тела и души.",
@@ -34,10 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
             reformerText: "Работа на оборудовании для глубокой проработки мышц, улучшения осанки и силы.",
             matText: "Классический пилатес на коврике для гибкости, баланса и контроля движений.",
             stretchText: "Мягкая растяжка, мобильность, восстановление и снятие напряжения.",
+            moreBtn: "Подробнее",
+            reformerMore: "Reformer Pilates подходит тем, кто хочет укрепить глубокие мышцы, улучшить осанку и научиться точнее контролировать движение. Занятие проходит на специальном оборудовании с регулируемым сопротивлением.",
+            matMore: "Mat Pilates — хороший старт для новичков. Занятия помогают развивать гибкость, баланс, стабильность корпуса и мягко укреплять тело без перегрузки.",
+            stretchMore: "Stretch & Mobility помогает снять напряжение, улучшить подвижность суставов и восстановиться после нагрузки. Подходит для мягкой практики и anti-stress формата.",
             bookBtn: "Записаться",
 
             trainersKicker: "Instructors",
-            trainersTitle: "Выбрать своего тренера",
+            trainersTitle: "Выбрать своего инструктора",
             trainersText: "Наши инструкторы будут рады помочь в достижении ваших целей.",
 
             pricesKicker: "Prices",
@@ -49,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
             packPriceTitle: "Абонемент 8 занятий",
             packPriceText: "Регулярная практика и лучшая цена за занятие.",
             privatePriceTitle: "Индивидуальная тренировка",
-            privatePriceText: "Персональная сессия с instructor.",
+            privatePriceText: "Персональная сессия с инструктором.",
             bestBadge: "Выгодно",
 
             locationKicker: "Location",
@@ -60,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             faqTitle: "Частые вопросы",
             faq1q: "Подойдёт ли пилатес новичкам?",
-            faq1a: "Да. Для первого занятия лучше выбрать Mat Pilates Beginner или пробное занятие, чтобы instructor подобрал комфортную нагрузку.",
+            faq1a: "Да. Для первого занятия лучше выбрать Mat Pilates Beginner или пробное занятие, чтобы инструктор подобрал комфортную нагрузку.",
             faq2q: "Чем Reformer отличается от Mat Pilates?",
             faq2a: "Mat Pilates проходит на коврике, а Reformer — на специальном оборудовании с сопротивлением. Reformer помогает глубже почувствовать мышцы и точнее контролировать движение.",
             faq3q: "Можно ли заниматься при боли в спине?",
@@ -75,8 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
             faq7a: "Да, пробное занятие помогает понять формат, познакомиться со студией и выбрать подходящее направление.",
             faq8q: "Какие языки доступны?",
             faq8a: "В демо-концепте доступны русский и английский языки. В реальном проекте можно добавить язык под аудиторию бизнеса.",
-            faq9q: "Можно ли выбрать тренера?",
-            faq9a: "Да, клиент может выбрать instructor по направлению, опыту и цели занятия.",
+            faq9q: "Можно ли выбрать инструктора?",
+            faq9a: "Да, клиент может выбрать инструктора по направлению, опыту и цели занятия.",
             faq10q: "Можно ли отменить или перенести занятие?",
             faq10a: "В демо-правилах перенос возможен заранее. В реальном проекте здесь можно указать точные условия студии.",
 
@@ -91,12 +84,15 @@ document.addEventListener("DOMContentLoaded", function () {
             navContacts: "Контакты",
 
             bookingTitle: "Запись на занятие",
-            bookingSubtitle: "Выберите направление, тренера и удобное время.",
+            bookingSubtitle: "Выберите направление, инструктора и удобное время.",
             stepDirection: "1. Выберите направление",
-            stepTrainer: "2. Выберите тренера",
+            stepTrainer: "2. Выберите инструктора",
             stepDate: "3. Выберите дату и время",
+            calendarShort: "Выбрать",
+            calendarSmall: "другую дату",
             formName: "Имя",
             formPhone: "Телефон",
+            goalTitle: "Что бы вы хотели улучшить?",
             goalPosture: "для осанки",
             goalFlex: "для гибкости",
             goalRecovery: "для восстановления",
@@ -104,23 +100,18 @@ document.addEventListener("DOMContentLoaded", function () {
             summaryText: "55 мин · профессиональное оборудование · персональное внимание",
             confirmBtn: "Подтвердить запись",
 
+            consultationTitle: "Задайте интересующий вас вопрос",
+            consultationSubtitle: "Администратор поможет выбрать направление, инструктора или удобное время.",
+            questionLabel: "Ваш вопрос",
+            sendQuestionBtn: "Отправить вопрос",
+
             sending: "Отправляем...",
             success: "Спасибо! Заявка отправлена.",
+            consultationSuccess: "Спасибо! Ваш вопрос отправлен.",
             error: "Не удалось отправить заявку. Попробуйте позже."
         },
 
         en: {
-            consultationTitle: "Ask your question",
-            consultationSubtitle: "The admin will help you choose a direction, instructor or convenient time.",
-            questionLabel: "Your question",
-            sendQuestionBtn: "Send question",
-            consultationSuccess: "Thank you! Your question has been sent.",
-            moreBtn: "More details",
-            reformerMore: "Reformer Pilates is ideal for strengthening deep muscles, improving posture and learning precise movement control. The class uses special equipment with adjustable resistance.",
-            matMore: "Mat Pilates is a good starting point for beginners. It helps develop flexibility, balance, core stability and gentle strength without overload.",
-            stretchMore: "Stretch & Mobility helps release tension, improve joint mobility and recover after training. It is suitable for soft practice and anti-stress sessions.",
-            calendarBtn: "Choose another date",
-            goalTitle: "What would you like to improve?",
             heroKicker: "Pilates & mindful movement",
             heroTitle: "Balance.\nSoft strength.\nEase of movement.",
             heroText: "A pilates and mindful movement studio for body and soul.",
@@ -136,6 +127,10 @@ document.addEventListener("DOMContentLoaded", function () {
             reformerText: "Equipment-based practice for deep muscle work, better posture and strength.",
             matText: "Classic mat pilates for flexibility, balance and movement control.",
             stretchText: "Soft stretching, mobility, recovery and tension release.",
+            moreBtn: "More details",
+            reformerMore: "Reformer Pilates is ideal for strengthening deep muscles, improving posture and learning precise movement control. The class uses special equipment with adjustable resistance.",
+            matMore: "Mat Pilates is a good starting point for beginners. It helps develop flexibility, balance, core stability and gentle strength without overload.",
+            stretchMore: "Stretch & Mobility helps release tension, improve joint mobility and recover after training. It is suitable for soft practice and anti-stress sessions.",
             bookBtn: "Book",
 
             trainersKicker: "Instructors",
@@ -197,8 +192,11 @@ document.addEventListener("DOMContentLoaded", function () {
             stepDirection: "1. Choose a direction",
             stepTrainer: "2. Choose an instructor",
             stepDate: "3. Choose date and time",
+            calendarShort: "Choose",
+            calendarSmall: "another date",
             formName: "Name",
             formPhone: "Phone",
+            goalTitle: "What would you like to improve?",
             goalPosture: "posture",
             goalFlex: "flexibility",
             goalRecovery: "recovery",
@@ -206,8 +204,14 @@ document.addEventListener("DOMContentLoaded", function () {
             summaryText: "55 min · professional equipment · personal attention",
             confirmBtn: "Confirm booking",
 
+            consultationTitle: "Ask your question",
+            consultationSubtitle: "The admin will help you choose a direction, instructor or convenient time.",
+            questionLabel: "Your question",
+            sendQuestionBtn: "Send question",
+
             sending: "Sending...",
             success: "Thank you! Your request has been sent.",
+            consultationSuccess: "Thank you! Your question has been sent.",
             error: "Could not send the request. Please try again later."
         }
     };
@@ -282,6 +286,131 @@ document.addEventListener("DOMContentLoaded", function () {
 
             openModal();
         });
+    });
+
+    closeButton.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    const customDateRadio = document.getElementById("customDateRadio");
+    const customDate = document.getElementById("customDate");
+    const calendarChip = document.getElementById("calendarChip");
+
+    function formatCustomDate(value) {
+        const selectedDate = new Date(value);
+
+        if (Number.isNaN(selectedDate.getTime())) {
+            return null;
+        }
+
+        const weekdaysRu = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+        const monthsRu = [
+            "янв", "фев", "мар", "апр", "мая", "июн",
+            "июл", "авг", "сен", "окт", "ноя", "дек"
+        ];
+
+        const weekdaysEn = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const monthsEn = [
+            "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ];
+
+        const weekdays = currentLang === "ru" ? weekdaysRu : weekdaysEn;
+        const months = currentLang === "ru" ? monthsRu : monthsEn;
+
+        return {
+            day: weekdays[selectedDate.getDay()],
+            date: `${selectedDate.getDate()} ${months[selectedDate.getMonth()]}`
+        };
+    }
+
+    if (customDateRadio && customDate && calendarChip) {
+        calendarChip.addEventListener("click", () => {
+            customDateRadio.checked = true;
+
+            if (customDate.showPicker) {
+                customDate.showPicker();
+            } else {
+                customDate.click();
+            }
+        });
+
+        customDate.addEventListener("change", () => {
+            const formatted = formatCustomDate(customDate.value);
+
+            if (!formatted) {
+                return;
+            }
+
+            customDateRadio.checked = true;
+
+            calendarChip.innerHTML = `
+        <b>${formatted.day}</b>
+        <small>${formatted.date}</small>
+      `;
+        });
+    }
+
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        status.classList.remove("error");
+        status.textContent = translations[currentLang].sending;
+
+        const formData = new FormData(form);
+
+        const payload = {
+            direction: formData.get("direction"),
+            trainer: formData.get("trainer"),
+            date: formData.get("date") === "custom" && formData.get("customDate") ?
+                formData.get("customDate") : formData.get("date"),
+            time: formData.get("time"),
+            name: formData.get("name"),
+            phone: formData.get("phone"),
+            contact: formData.get("contact"),
+            goal: formData.get("goal"),
+            comment: formData.get("comment")
+        };
+
+        try {
+            const response = await fetch("/api/booking", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.ok) {
+                throw new Error(result.message || "Request failed");
+            }
+
+            status.textContent = translations[currentLang].success;
+
+            if (tg && tg.HapticFeedback) {
+                tg.HapticFeedback.notificationOccurred("success");
+            }
+
+            setTimeout(() => {
+                form.reset();
+                closeModal();
+                status.textContent = "";
+            }, 1400);
+        } catch (error) {
+            console.error(error);
+            status.classList.add("error");
+            status.textContent = translations[currentLang].error;
+
+            if (tg && tg.HapticFeedback) {
+                tg.HapticFeedback.notificationOccurred("error");
+            }
+        }
     });
 
     const consultationModal = document.getElementById("consultationModal");
@@ -363,123 +492,5 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    closeButton.addEventListener("click", closeModal);
-
-    modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
-    const calendarToggle = document.getElementById("calendarToggle");
-    const customDate = document.getElementById("customDate");
-
-    if (calendarToggle && customDate) {
-        calendarToggle.addEventListener("click", () => {
-            customDate.classList.toggle("visible");
-
-            if (customDate.classList.contains("visible")) {
-                customDate.focus();
-            }
-        });
-
-        customDate.addEventListener("change", () => {
-            document.querySelectorAll('input[name="date"]').forEach((input) => {
-                input.checked = false;
-            });
-        });
-    }
-    form.addEventListener("submit", async function (event) {
-        event.preventDefault();
-
-        status.classList.remove("error");
-        status.textContent = translations[currentLang].sending;
-
-        const formData = new FormData(form);
-
-        const payload = {
-            direction: formData.get("direction"),
-            trainer: formData.get("trainer"),
-            date: formData.get("customDate") || formData.get("date"),
-            time: formData.get("time"),
-            name: formData.get("name"),
-            phone: formData.get("phone"),
-            contact: formData.get("contact"),
-            goal: formData.get("goal"),
-            comment: formData.get("comment")
-        };
-
-        try {
-            const response = await fetch("/api/booking", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
-            });
-
-            const result = await response.json();
-
-            if (!response.ok || !result.ok) {
-                throw new Error(result.message || "Request failed");
-            }
-
-            status.textContent = translations[currentLang].success;
-
-            if (tg && tg.HapticFeedback) {
-                tg.HapticFeedback.notificationOccurred("success");
-            }
-
-            setTimeout(() => {
-                form.reset();
-                closeModal();
-                status.textContent = "";
-            }, 1400);
-        } catch (error) {
-            console.error(error);
-            status.classList.add("error");
-            status.textContent = translations[currentLang].error;
-
-            if (tg && tg.HapticFeedback) {
-                tg.HapticFeedback.notificationOccurred("error");
-            }
-        }
-    });
-
     setLanguage(currentLang);
 });
-
-const openCalendarBtn = document.querySelector(".open-calendar");
-const customDatePicker = document.getElementById("customDatePicker");
-const dateGrid = document.querySelector(".date-grid");
-
-if (openCalendarBtn && customDatePicker) {
-    openCalendarBtn.addEventListener("click", () => {
-        customDatePicker.showPicker ? customDatePicker.showPicker() : customDatePicker.click();
-    });
-
-    customDatePicker.addEventListener("change", function () {
-        const selectedDate = new Date(this.value);
-
-        if (isNaN(selectedDate)) return;
-
-        const weekdays = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
-        const months = [
-            "янв", "фев", "мар", "апр", "мая", "июн",
-            "июл", "авг", "сен", "окт", "ноя", "дек"
-        ];
-
-        const dayName = weekdays[selectedDate.getDay()];
-        const dayNumber = selectedDate.getDate();
-        const monthName = months[selectedDate.getMonth()];
-
-        document.querySelectorAll(".date-chip").forEach((btn) => {
-            btn.classList.remove("active");
-        });
-
-        openCalendarBtn.classList.add("active");
-        openCalendarBtn.innerHTML = `
-    <span>${dayName}</span>
-    <small>${dayNumber} ${monthName}</small>
-    `;
-    });
-}
