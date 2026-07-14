@@ -475,39 +475,52 @@
                     </select>
                 </div>
 
-                <div class="form-step">
-                    <h3 data-i18n="stepDate">3. Выберите дату и время</h3>
-                    <div class="date-chips">
-                        <label><input type="radio" name="date" value="Monday, 19 May" /> <span>Пн<br><small>19
-                                    мая</small></span></label>
-                        <label><input type="radio" name="date" value="Tuesday, 20 May" /> <span>Вт<br><small>20
-                                    мая</small></span></label>
-                        <label><input type="radio" name="date" value="Wednesday, 21 May" checked />
-                            <span>Ср<br><small>21 мая</small></span></label>
-                        <label><input type="radio" name="date" value="Thursday, 22 May" /> <span>Чт<br><small>22
-                                    мая</small></span></label>
-                        <label><input type="radio" name="date" value="Friday, 23 May" /> <span>Пт<br><small>23
-                                    мая</small></span></label>
-                        <label><input type="radio" name="date" value="Saturday, 24 May" /> <span>Сб<br><small>24
-                                    мая</small></span></label>
-                    </div>
+                <div class="booking-step">
+                    <h3>3. Выберите дату и время</h3>
 
-                    <div class="calendar-row">
-                        <button type="button" class="calendar-toggle" id="calendarToggle" data-i18n="calendarBtn">
-                            Выбрать другую дату
+                    <div class="date-grid">
+                        <button class="date-chip active" type="button">
+                            <span>Пн</span>
+                            <small>19 мая</small>
                         </button>
 
-                        <input type="date" name="customDate" id="customDate" class="custom-date" />
+                        <button class="date-chip" type="button">
+                            <span>Вт</span>
+                            <small>20 мая</small>
+                        </button>
+
+                        <button class="date-chip" type="button">
+                            <span>Ср</span>
+                            <small>21 мая</small>
+                        </button>
+
+                        <button class="date-chip" type="button">
+                            <span>Чт</span>
+                            <small>22 мая</small>
+                        </button>
+
+                        <button class="date-chip" type="button">
+                            <span>Пт</span>
+                            <small>23 мая</small>
+                        </button>
+
+                        <button class="date-chip date-chip-alt open-calendar" type="button">
+                            <span>Выбрать</span>
+                            <small>другую дату</small>
+                        </button>
                     </div>
 
-                    <div class="time-chips">
-                        <label><input type="radio" name="time" value="09:00" checked /> <span>09:00</span></label>
-                        <label><input type="radio" name="time" value="10:30" /> <span>10:30</span></label>
-                        <label><input type="radio" name="time" value="12:00" /> <span>12:00</span></label>
-                        <label><input type="radio" name="time" value="18:30" /> <span>18:30</span></label>
-                        <label><input type="radio" name="time" value="19:30" /> <span>19:30</span></label>
+                    <input type="date" id="customDatePicker" class="hidden-date-picker" />
+
+                    <div class="time-grid">
+                        <button class="time-chip active" type="button">09:00</button>
+                        <button class="time-chip" type="button">10:30</button>
+                        <button class="time-chip" type="button">12:00</button>
+                        <button class="time-chip" type="button">18:30</button>
+                        <button class="time-chip" type="button">19:30</button>
                     </div>
                 </div>
+
 
                 <div class="form-grid">
                     <label>

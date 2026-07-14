@@ -447,3 +447,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setLanguage(currentLang);
 });
+
+const openCalendarBtn = document.querySelector(".open-calendar");
+const customDatePicker = document.getElementById("customDatePicker");
+const dateGrid = document.querySelector(".date-grid");
+
+if (openCalendarBtn && customDatePicker) {
+    openCalendarBtn.addEventListener("click", () => {
+        customDatePicker.showPicker ? customDatePicker.showPicker() : customDatePicker.click();
+    });
+
+    customDatePicker.addEventListener("change", function () {
+        const selectedDate = new Date(this.value);
+
+        if (isNaN(selectedDate)) return;
+
+        const weekdays = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+        const months = [
+            "янв", "фев", "мар", "апр", "мая", "июн",
+            "июл", "авг", "сен", "окт", "ноя", "дек"
+        ];
+
+        const dayName = weekdays[selectedDate.getDay()];
+        const dayNumber = selectedDate.getDate();
+        const monthName = months[selectedDate.getMonth()];
+
+        document.querySelectorAll(".date-chip").forEach((btn) => {
+            btn.classList.remove("active");
+        });
+
+        openCalendarBtn.classList.add("active");
+        openCalendarBtn.innerHTML = `
+    <span>${dayName}</span>
+    <small>${dayNumber} ${monthName}</small>
+    `;
+    });
+}
