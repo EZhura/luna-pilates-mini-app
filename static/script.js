@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const translations = {
         ru: {
+            customDateLabel: "Выберите дату в календаре",
             heroKicker: "Pilates & mindful movement",
             heroTitle: "Баланс.\nМягкая сила.\nЛёгкость движения.",
             heroText: "Студия пилатеса и осознанного движения для тела и души.",
@@ -112,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
 
         en: {
+            customDateLabel: "Choose a date in the calendar",
             heroKicker: "Pilates & mindful movement",
             heroTitle: "Balance.\nSoft strength.\nEase of movement.",
             heroText: "A pilates and mindful movement studio for body and soul.",
@@ -299,6 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const customDateRadio = document.getElementById("customDateRadio");
     const customDate = document.getElementById("customDate");
     const calendarChip = document.getElementById("calendarChip");
+    const customDateRow = document.getElementById("customDateRow");
 
     function formatCustomDate(value) {
         const selectedDate = new Date(value);
@@ -328,13 +331,22 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-    if (customDateRadio && customDate && calendarChip) {
-        customDate.addEventListener("focus", () => {
+    if (customDateRadio && customDate && calendarChip && customDateRow) {
+        calendarChip.addEventListener("click", () => {
             customDateRadio.checked = true;
-        });
+            customDateRow.classList.add("visible");
 
-        customDate.addEventListener("click", () => {
-            customDateRadio.checked = true;
+            setTimeout(() => {
+                customDate.focus();
+
+                if (customDate.showPicker) {
+                    try {
+                        customDate.showPicker();
+                    } catch (error) {
+                        console.log("Date picker should be opened manually.");
+                    }
+                }
+            }, 100);
         });
 
         customDate.addEventListener("change", () => {
@@ -347,9 +359,17 @@ document.addEventListener("DOMContentLoaded", function () {
             customDateRadio.checked = true;
 
             calendarChip.innerHTML = `
-    <b>${formatted.day}</b>
-    <small>${formatted.date}</small>
+      <b>${formatted.day}</b>
+      <small>${formatted.date}</small>
     `;
+        });
+
+        document.querySelectorAll('input[name="date"]').forEach((dateInput) => {
+            dateInput.addEventListener("change", () => {
+                if (dateInput.value !== "custom") {
+                    customDateRow.classList.remove("visible");
+                }
+            });
         });
     }
 
