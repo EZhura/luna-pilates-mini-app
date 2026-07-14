@@ -10,8 +10,6 @@ from flask import Flask, request, jsonify, send_from_directory
 BOT_TOKEN = os.getenv("BOT_TOKEN", "").strip()
 ADMIN_CHAT_ID = os.getenv("ADMIN_CHAT_ID", "").strip()
 
-# Render usually gives this automatically if you add it manually as WEB_APP_URL.
-# Example: https://luna-pilates-mini-app.onrender.com
 WEB_APP_URL = os.getenv("WEB_APP_URL", "").strip()
 RENDER_EXTERNAL_URL = os.getenv("RENDER_EXTERNAL_URL", "").strip()
 
@@ -27,14 +25,12 @@ app = Flask(__name__, static_folder="static", static_url_path="/static")
 
 
 def safe_text(value: str) -> str:
-    """Escape text for safe Telegram HTML messages."""
     if value is None:
         return ""
     return html.escape(str(value).strip())
 
 
 async def telegram_api(method: str, payload: dict) -> dict:
-    """Send request to Telegram Bot API."""
     if not BOT_TOKEN:
         return {"ok": False, "description": "BOT_TOKEN is not set"}
 
@@ -44,7 +40,6 @@ async def telegram_api(method: str, payload: dict) -> dict:
 
 
 def run_async(coro):
-    """Run async function inside Flask route safely."""
     return asyncio.run(coro)
 
 
@@ -71,30 +66,37 @@ def booking_request():
     data = request.get_json(silent=True) or {}
 
     name = safe_text(data.get("name"))
+    phone = safe_text(data.get("phone"))
     contact = safe_text(data.get("contact"))
-    class_type = safe_text(data.get("classType"))
-    preferred_time = safe_text(data.get("preferredTime"))
-    language = safe_text(data.get("language"))
+    direction = safe_text(data.get("direction"))
+    trainer = safe_text(data.get("trainer"))
+    date = safe_text(data.get("date"))
+    time = safe_text(data.get("time"))
+    goal = safe_text(data.get("goal"))
     comment = safe_text(data.get("comment"))
 
     if not name or not contact:
         return jsonify(
             {
                 "ok": False,
-                "message": "Please add your name and contact.",
+                "message": "Please add your name and Telegram / WhatsApp.",
             }
         ), 400
 
     created_at = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
 
     message = f"""
-🌙 <b>New Luna Pilates request</b>
+🌙 <b>New Luna Pilates booking request</b>
 
 <b>Name:</b> {name}
-<b>Contact:</b> {contact}
-<b>Class:</b> {class_type or "Not selected"}
-<b>Preferred time:</b> {preferred_time or "Not selected"}
-<b>Language:</b> {language or "Not selected"}
+<b>Phone:</b> {phone or "—"}
+<b>Telegram / WhatsApp:</b> {contact}
+
+<b>Direction:</b> {direction or "Not selected"}
+<b>Trainer:</b> {trainer or "Not selected"}
+<b>Date:</b> {date or "Not selected"}
+<b>Time:</b> {time or "Not selected"}
+<b>Goal:</b> {goal or "Not selected"}
 
 <b>Comment:</b>
 {comment or "—"}
@@ -144,29 +146,26 @@ def telegram_webhook():
     if not chat_id:
         return jsonify({"ok": True})
 
-    first_name = safe_text(chat.get("first_name") or "there")
-
     if text.startswith("/start") or text.startswith("/demo") or text.startswith("/contact"):
-        reply_text = f"""
+        reply_text = """
 Welcome to <b>Luna Pilates Studio</b> 🌙
 
 This is a demo Mini App concept for a pilates / wellness studio.
 
 Inside you can view:
-• class formats
-• prices
+• directions
 • schedule
+• trainers
+• prices
 • FAQ
 • location
-• booking request form
+• trial class booking
 
 Tap the button below to open the Mini App.
 """.strip()
     else:
-        reply_text = f"""
-Hi, {first_name} 🌿
-
-This bot opens the Luna Pilates Mini App demo.
+        reply_text = """
+This bot opens the Luna Pilates Mini App demo 🌿
 
 Tap the button below to view the studio concept.
 """.strip()
@@ -204,13 +203,12 @@ Tap the button below to view the studio concept.
 
 
 def setup_webhook():
-    """Set Telegram webhook automatically on Render startup."""
     if not BOT_TOKEN:
-        print("BOT_TOKEN is not set. Telegram bot webhook was not configured.")
+        print("BOT_TOKEN is not set. Telegram webhook was not configured.")
         return
 
     if not WEB_APP_URL or WEB_APP_URL == "https://example.com":
-        print("WEB_APP_URL is not set. Telegram bot webhook was not configured.")
+        print("WEB_APP_URL is not set. Telegram webhook was not configured.")
         return
 
     webhook_url = f"{WEB_APP_URL.rstrip('/')}/telegram/webhook"

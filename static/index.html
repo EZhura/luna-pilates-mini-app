@@ -5,24 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Luna Pilates Studio — Mini App Demo</title>
-
+    <title>Luna Pilates — Mini App Demo</title>
     <meta name="description"
-        content="Demo Mini App for a pilates and wellness studio: classes, prices, schedule, FAQ, location and booking request in one link." />
+        content="Mini App demo for a pilates studio: schedule, directions, trainers, prices, FAQ, location and booking request." />
 
     <link rel="stylesheet" href="/static/style.css" />
 </head>
 
 <body>
-    <div class="app-shell">
+    <div class="app">
 
-        <header class="hero">
-            <nav class="topbar">
-                <div class="brand-mini">
-                    <div class="brand-mark">☾</div>
+        <header id="home" class="hero">
+            <nav class="top-nav">
+                <div class="logo-row">
+                    <img src="/static/images/logo.png" alt="Luna Pilates logo" class="logo-img" />
                     <div>
-                        <div class="brand-name">Luna Pilates</div>
-                        <div class="brand-label">Mini App Demo</div>
+                        <div class="brand">Luna Pilates</div>
+                        <div class="brand-sub">Mini App Demo</div>
                     </div>
                 </div>
 
@@ -32,363 +31,465 @@
                 </div>
             </nav>
 
-            <section class="hero-content">
-                <div class="hero-text">
-                    <div class="eyebrow" data-i18n="hero_eyebrow">Pilates & mindful movement</div>
-
-                    <h1 data-i18n="hero_title">
-                        Студия пилатеса в одной красивой ссылке
-                    </h1>
-
-                    <p class="hero-subtitle" data-i18n="hero_subtitle">
-                        Направления, цены, расписание, FAQ, адрес и заявка на пробное занятие — всё в одном Mini App.
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <div class="eyebrow" data-i18n="heroKicker">Pilates & mindful movement</div>
+                    <h1 data-i18n="heroTitle">Баланс. Сила. Лёгкость.</h1>
+                    <p data-i18n="heroText">
+                        Студия пилатеса и осознанного движения для тела и души.
                     </p>
 
                     <div class="hero-actions">
-                        <a href="#booking" class="primary-btn" data-i18n="hero_cta">Записаться на пробное</a>
-                        <a href="#classes" class="secondary-btn" data-i18n="hero_secondary">Смотреть направления</a>
-                    </div>
-
-                    <div class="trust-row">
-                        <div>
-                            <strong>RU / EN</strong>
-                            <span data-i18n="trust_lang">языки</span>
-                        </div>
-                        <div>
-                            <strong>5</strong>
-                            <span data-i18n="trust_sections">разделов</span>
-                        </div>
-                        <div>
-                            <strong>1 link</strong>
-                            <span data-i18n="trust_link">для bio</span>
-                        </div>
+                        <button class="btn btn-primary open-booking" data-i18n="trialBtn">Записаться на пробное
+                            занятие</button>
+                        <button class="btn btn-outline open-consultation" data-i18n="consultBtn">Получить
+                            консультацию</button>
                     </div>
                 </div>
 
-                <div class="hero-card">
-                    <div class="moon-logo">
-                        <div class="moon">☾</div>
-                        <div class="pose-line">◜ ─ ✦ ─ ◝</div>
-                    </div>
-
-                    <h2>Luna Pilates</h2>
-                    <p data-i18n="hero_card_text">
-                        Ваш проводник в мире Pilates
-                    </p>
-
-                    <div class="quick-grid">
-                        <a href="#schedule">
-                            <span>📅</span>
-                            <b data-i18n="quick_schedule">Расписание</b>
-                        </a>
-                        <a href="#classes">
-                            <span>🪷</span>
-                            <b data-i18n="quick_classes">Направления</b>
-                        </a>
-                        <a href="#prices">
-                            <span>🏷️</span>
-                            <b data-i18n="quick_prices">Цены</b>
-                        </a>
-                        <a href="#booking">
-                            <span>💬</span>
-                            <b data-i18n="quick_booking">Запись</b>
-                        </a>
-                    </div>
+                <div class="hero-visual">
+                    <img src="/static/images/description.png" alt="Luna Pilates description" />
                 </div>
-            </section>
+            </div>
         </header>
 
         <main>
 
-            <section class="section intro-section">
-                <div class="section-heading">
-                    <span class="section-kicker" data-i18n="intro_kicker">About the studio</span>
-                    <h2 data-i18n="intro_title">Мягкий путь к силе, осанке и спокойствию</h2>
-                    <p data-i18n="intro_text">
-                        Luna Pilates — демо-концепт для студии пилатеса и wellness-направления. Такой Mini App можно
-                        поставить в Instagram bio, WhatsApp, Google Maps или отправлять клиентам в переписке.
-                    </p>
+            <section id="schedule" class="section">
+                <div class="section-title">
+                    <span data-i18n="scheduleKicker">Schedule</span>
+                    <h2 data-i18n="scheduleTitle">Расписание</h2>
+                    <p data-i18n="scheduleText">Выберите направление и посмотрите доступные группы.</p>
                 </div>
 
-                <div class="benefits-grid">
-                    <article>
-                        <span>01</span>
-                        <h3 data-i18n="benefit_1_title">Понятная структура</h3>
-                        <p data-i18n="benefit_1_text">Клиент быстро видит направления, цены и как записаться.</p>
-                    </article>
-
-                    <article>
-                        <span>02</span>
-                        <h3 data-i18n="benefit_2_title">Меньше вопросов в Direct</h3>
-                        <p data-i18n="benefit_2_text">FAQ закрывает базовые вопросы до переписки с администратором.</p>
-                    </article>
-
-                    <article>
-                        <span>03</span>
-                        <h3 data-i18n="benefit_3_title">Заявка в один шаг</h3>
-                        <p data-i18n="benefit_3_text">Клиент оставляет контакт, направление и удобное время.</p>
-                    </article>
-                </div>
-            </section>
-
-            <section id="classes" class="section">
-                <div class="section-heading">
-                    <span class="section-kicker" data-i18n="classes_kicker">Classes</span>
-                    <h2 data-i18n="classes_title">Направления</h2>
-                    <p data-i18n="classes_text">Несколько форматов занятий для разных целей и уровня подготовки.</p>
+                <div class="tabs">
+                    <button class="tab active" data-schedule="reformer">Reformer Pilates</button>
+                    <button class="tab" data-schedule="mat">Mat Pilates</button>
+                    <button class="tab" data-schedule="stretch">Stretch & Mobility</button>
                 </div>
 
-                <div class="cards-grid">
-                    <article class="class-card">
-                        <div class="card-icon">🧘</div>
-                        <h3>Mat Pilates</h3>
-                        <p data-i18n="class_mat">Классический пилатес на коврике для укрепления мышц, осанки и контроля
-                            тела.</p>
-                        <span data-i18n="level_beginner">Beginner friendly</span>
-                    </article>
+                <div class="schedule-panel active" id="schedule-reformer">
+                    <div class="week-grid">
+                        <div class="day-card"><b>Пн</b><small>08:00</small><span>Reformer
+                                Flow</span><small>18:30</small><span>Strong Core</span></div>
+                        <div class="day-card"><b>Вт</b><small>10:30</small><span>Reformer
+                                Basics</span><small>19:00</small><span>Long & Lean</span></div>
+                        <div class="day-card selected"><b>Ср</b><small>09:00</small><span>Reformer
+                                Flow</span><small>18:30</small><span>Strong Core</span></div>
+                        <div class="day-card"><b>Чт</b><small>10:00</small><span>Posture
+                                Care</span><small>19:30</small><span>Reformer Sculpt</span></div>
+                        <div class="day-card"><b>Пт</b><small>08:00</small><span>Reformer
+                                Flow</span><small>18:30</small><span>Strong Core</span></div>
+                        <div class="day-card"><b>Сб</b><small>10:00</small><span>Reformer
+                                Basics</span><small>12:00</small><span>Soft Core</span></div>
+                        <div class="day-card muted"><b>Вс</b><span>Выходной</span></div>
+                    </div>
+                </div>
 
-                    <article class="class-card featured-card">
-                        <div class="card-icon">🌙</div>
-                        <h3>Reformer Pilates</h3>
-                        <p data-i18n="class_reformer">Глубокая работа с телом на реформере: сила, баланс, техника и
-                            плавность движений.</p>
-                        <span data-i18n="level_popular">Most popular</span>
-                    </article>
+                <div class="schedule-panel" id="schedule-mat">
+                    <div class="week-grid">
+                        <div class="day-card"><b>Пн</b><small>09:30</small><span>Mat
+                                Beginner</span><small>19:00</small><span>Core Balance</span></div>
+                        <div class="day-card selected"><b>Вт</b><small>08:30</small><span>Morning
+                                Mat</span><small>18:30</small><span>Posture Pilates</span></div>
+                        <div class="day-card"><b>Ср</b><small>10:30</small><span>Mat
+                                Beginner</span><small>20:00</small><span>Core Balance</span></div>
+                        <div class="day-card"><b>Чт</b><small>09:00</small><span>Morning
+                                Mat</span><small>18:30</small><span>Posture Pilates</span></div>
+                        <div class="day-card"><b>Пт</b><small>10:00</small><span>Mat
+                                Beginner</span><small>19:00</small><span>Core Balance</span></div>
+                        <div class="day-card"><b>Сб</b><small>11:00</small><span>Weekend Mat</span></div>
+                        <div class="day-card muted"><b>Вс</b><span>Выходной</span></div>
+                    </div>
+                </div>
 
-                    <article class="class-card">
-                        <div class="card-icon">🌿</div>
-                        <h3>Stretch & Mobility</h3>
-                        <p data-i18n="class_stretch">Мягкая растяжка, мобильность суставов и восстановление после
-                            нагрузки.</p>
-                        <span data-i18n="level_soft">Soft practice</span>
-                    </article>
+                <div class="schedule-panel" id="schedule-stretch">
+                    <div class="week-grid">
+                        <div class="day-card"><b>Пн</b><small>20:00</small><span>Deep Stretch</span></div>
+                        <div class="day-card"><b>Вт</b><small>12:00</small><span>Mobility Flow</span></div>
+                        <div class="day-card"><b>Ср</b><small>20:00</small><span>Back Care</span></div>
+                        <div class="day-card selected"><b>Чт</b><small>12:00</small><span>Mobility
+                                Flow</span><small>19:30</small><span>Deep Stretch</span></div>
+                        <div class="day-card"><b>Пт</b><small>20:00</small><span>Back Care</span></div>
+                        <div class="day-card"><b>Сб</b><small>12:00</small><span>Stretch & Mobility</span></div>
+                        <div class="day-card muted"><b>Вс</b><span>Выходной</span></div>
+                    </div>
+                </div>
 
-                    <article class="class-card">
-                        <div class="card-icon">✨</div>
-                        <h3>Private Session</h3>
-                        <p data-i18n="class_private">Индивидуальное занятие под цели клиента: осанка, спина, тонус,
-                            восстановление.</p>
-                        <span data-i18n="level_private">Personal plan</span>
-                    </article>
+                <div class="center-actions">
+                    <button class="btn btn-outline open-consultation" data-i18n="consultBtn">Получить
+                        консультацию</button>
                 </div>
             </section>
 
-            <section id="prices" class="section prices-section">
-                <div class="section-heading">
-                    <span class="section-kicker" data-i18n="prices_kicker">Prices</span>
-                    <h2 data-i18n="prices_title">Цены</h2>
-                    <p data-i18n="prices_text">Демо-прайс в GEL для концепта студии в Тбилиси.</p>
+            <section id="directions" class="section">
+                <div class="section-title">
+                    <span data-i18n="directionsKicker">Directions</span>
+                    <h2 data-i18n="directionsTitle">Направления</h2>
+                </div>
+
+                <div class="cards-3">
+                    <article class="image-card">
+                        <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=900&q=80"
+                            alt="Reformer Pilates" />
+                        <div>
+                            <h3>Reformer Pilates</h3>
+                            <p data-i18n="reformerText">Работа на оборудовании для глубокой проработки мышц, улучшения
+                                осанки и силы.</p>
+                            <button class="link-btn open-booking" data-direction="Reformer Pilates"
+                                data-i18n="bookBtn">Записаться</button>
+                        </div>
+                    </article>
+
+                    <article class="image-card">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80"
+                            alt="Mat Pilates" />
+                        <div>
+                            <h3>Mat Pilates</h3>
+                            <p data-i18n="matText">Классический пилатес на коврике для гибкости, баланса и контроля
+                                движений.</p>
+                            <button class="link-btn open-booking" data-direction="Mat Pilates"
+                                data-i18n="bookBtn">Записаться</button>
+                        </div>
+                    </article>
+
+                    <article class="image-card">
+                        <img src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=900&q=80"
+                            alt="Stretch and mobility" />
+                        <div>
+                            <h3>Stretch & Mobility</h3>
+                            <p data-i18n="stretchText">Мягкая растяжка, мобильность, восстановление и снятие напряжения.
+                            </p>
+                            <button class="link-btn open-booking" data-direction="Stretch & Mobility"
+                                data-i18n="bookBtn">Записаться</button>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="center-actions">
+                    <button class="btn btn-outline open-consultation" data-i18n="consultBtn">Получить
+                        консультацию</button>
+                </div>
+            </section>
+
+            <section id="trainers" class="section">
+                <div class="section-title">
+                    <span data-i18n="trainersKicker">Instructors</span>
+                    <h2 data-i18n="trainersTitle">Выбрать своего тренера</h2>
+                    <p data-i18n="trainersText">В пилатесе тренеров часто называют instructors. Клиент может выбрать
+                        специалиста под свою цель.</p>
+                </div>
+
+                <div class="trainer-grid">
+                    <article class="trainer-card">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80"
+                            alt="Anna" />
+                        <h3>Анна</h3>
+                        <p><b>Опыт:</b> 6 лет</p>
+                        <p>Reformer, осанка, сила, мягкое восстановление.</p>
+                        <button class="link-btn open-booking" data-trainer="Анна">Записаться</button>
+                    </article>
+
+                    <article class="trainer-card">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=500&q=80"
+                            alt="Sofia" />
+                        <h3>София</h3>
+                        <p><b>Опыт:</b> 5 лет</p>
+                        <p>Mat Pilates, stretch, beginner-friendly занятия.</p>
+                        <button class="link-btn open-booking" data-trainer="София">Записаться</button>
+                    </article>
+
+                    <article class="trainer-card">
+                        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=500&q=80"
+                            alt="Maria" />
+                        <h3>Мария</h3>
+                        <p><b>Опыт:</b> 7 лет</p>
+                        <p>Rehabilitation, core, индивидуальный подход.</p>
+                        <button class="link-btn open-booking" data-trainer="Мария">Записаться</button>
+                    </article>
+
+                    <article class="trainer-card">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80"
+                            alt="Elena" />
+                        <h3>Елена</h3>
+                        <p><b>Опыт:</b> 8 лет</p>
+                        <p>Mobility, дыхание, anti-stress практики.</p>
+                        <button class="link-btn open-booking" data-trainer="Елена">Записаться</button>
+                    </article>
+                </div>
+
+                <div class="center-actions">
+                    <button class="btn btn-outline open-consultation" data-i18n="consultBtn">Получить
+                        консультацию</button>
+                </div>
+            </section>
+
+            <section id="prices" class="section">
+                <div class="section-title">
+                    <span data-i18n="pricesKicker">Prices</span>
+                    <h2 data-i18n="pricesTitle">Цены</h2>
                 </div>
 
                 <div class="price-grid">
                     <article class="price-card">
-                        <h3 data-i18n="price_trial_title">Trial class</h3>
-                        <div class="price">35 GEL</div>
-                        <p data-i18n="price_trial_text">Пробное групповое занятие для знакомства со студией.</p>
+                        <h3 data-i18n="trialPriceTitle">Пробное занятие</h3>
+                        <div class="price">40 ₾</div>
+                        <p data-i18n="trialPriceText">55 минут, знакомство со студией и подбор направления.</p>
+                        <button class="btn btn-small open-booking" data-i18n="bookBtn">Записаться</button>
                     </article>
 
                     <article class="price-card">
-                        <h3 data-i18n="price_single_title">Single class</h3>
-                        <div class="price">50 GEL</div>
-                        <p data-i18n="price_single_text">Разовое посещение группового занятия.</p>
+                        <h3 data-i18n="singlePriceTitle">Разовое занятие</h3>
+                        <div class="price">65 ₾</div>
+                        <p data-i18n="singlePriceText">Любое направление в группе.</p>
+                        <button class="btn btn-small open-booking" data-i18n="bookBtn">Записаться</button>
                     </article>
 
-                    <article class="price-card premium">
-                        <div class="badge" data-i18n="price_badge">Best choice</div>
-                        <h3 data-i18n="price_pack_title">8 classes package</h3>
-                        <div class="price">320 GEL</div>
-                        <p data-i18n="price_pack_text">Абонемент для регулярной практики и заметного результата.</p>
+                    <article class="price-card accent">
+                        <span class="badge" data-i18n="bestBadge">Выгодно</span>
+                        <h3 data-i18n="packPriceTitle">Абонемент 8 занятий</h3>
+                        <div class="price">420 ₾</div>
+                        <p data-i18n="packPriceText">Регулярная практика и лучшая цена за занятие.</p>
+                        <button class="btn btn-small open-booking" data-i18n="bookBtn">Записаться</button>
                     </article>
 
                     <article class="price-card">
-                        <h3 data-i18n="price_private_title">Private session</h3>
-                        <div class="price">120 GEL</div>
-                        <p data-i18n="price_private_text">Индивидуальное занятие под личные цели и особенности тела.</p>
+                        <h3 data-i18n="privatePriceTitle">Индивидуальная тренировка</h3>
+                        <div class="price">130 ₾</div>
+                        <p data-i18n="privatePriceText">Персональная сессия с instructor.</p>
+                        <button class="btn btn-small open-booking" data-i18n="bookBtn">Записаться</button>
                     </article>
-                </div>
-            </section>
-
-            <section id="schedule" class="section schedule-section">
-                <div class="section-heading">
-                    <span class="section-kicker" data-i18n="schedule_kicker">Schedule</span>
-                    <h2 data-i18n="schedule_title">Расписание</h2>
-                    <p data-i18n="schedule_text">Удобные утренние и вечерние слоты для клиентов.</p>
-                </div>
-
-                <div class="schedule-card">
-                    <div class="schedule-row">
-                        <div>
-                            <strong data-i18n="schedule_weekdays">Monday — Friday</strong>
-                            <span>08:00 / 10:00 / 18:30 / 20:00</span>
-                        </div>
-                    </div>
-
-                    <div class="schedule-row">
-                        <div>
-                            <strong data-i18n="schedule_saturday">Saturday</strong>
-                            <span>10:00 / 12:00</span>
-                        </div>
-                    </div>
-
-                    <div class="schedule-row">
-                        <div>
-                            <strong data-i18n="schedule_sunday">Sunday</strong>
-                            <span data-i18n="schedule_rest">Rest day</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section instructors-section">
-                <div class="section-heading">
-                    <span class="section-kicker" data-i18n="instructors_kicker">Experience</span>
-                    <h2 data-i18n="instructors_title">Что получает клиент</h2>
-                </div>
-
-                <div class="experience-list">
-                    <div>
-                        <span>🕊️</span>
-                        <p data-i18n="experience_1">Спокойное знакомство со студией до записи.</p>
-                    </div>
-                    <div>
-                        <span>💎</span>
-                        <p data-i18n="experience_2">Понятный выбор направления без долгой переписки.</p>
-                    </div>
-                    <div>
-                        <span>📍</span>
-                        <p data-i18n="experience_3">Адрес, условия и FAQ в одном месте.</p>
-                    </div>
-                    <div>
-                        <span>💬</span>
-                        <p data-i18n="experience_4">Заявка уходит администратору в удобном формате.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="faq" class="section faq-section">
-                <div class="section-heading">
-                    <span class="section-kicker">FAQ</span>
-                    <h2 data-i18n="faq_title">Частые вопросы</h2>
-                </div>
-
-                <div class="faq-list">
-                    <details>
-                        <summary data-i18n="faq_1_q">Нужен ли опыт?</summary>
-                        <p data-i18n="faq_1_a">Нет, новички могут начать с Mat Pilates или пробного занятия.</p>
-                    </details>
-
-                    <details>
-                        <summary data-i18n="faq_2_q">Что взять с собой?</summary>
-                        <p data-i18n="faq_2_a">Удобную одежду, воду и хорошее настроение. Всё оборудование есть в
-                            студии.</p>
-                    </details>
-
-                    <details>
-                        <summary data-i18n="faq_3_q">Можно ли заниматься при боли в спине?</summary>
-                        <p data-i18n="faq_3_a">Лучше сообщить об этом заранее. Мы рекомендуем начать с индивидуальной
-                            консультации.</p>
-                    </details>
-
-                    <details>
-                        <summary data-i18n="faq_4_q">На каких языках проходят занятия?</summary>
-                        <p data-i18n="faq_4_a">В демо-концепте доступны русский и английский языки.</p>
-                    </details>
                 </div>
             </section>
 
             <section id="location" class="section location-section">
-                <div class="section-heading">
-                    <span class="section-kicker" data-i18n="location_kicker">Location</span>
-                    <h2 data-i18n="location_title">Локация</h2>
-                    <p data-i18n="location_text">Tbilisi, Vera / Vake area. Точный адрес можно отправлять после
-                        подтверждения записи.</p>
+                <div class="section-title">
+                    <span data-i18n="locationKicker">Location</span>
+                    <h2 data-i18n="locationTitle">Локация</h2>
                 </div>
 
-                <div class="map-card">
-                    <div class="map-placeholder">
+                <div class="location-card">
+                    <div class="map-preview">
                         <span>📍</span>
-                        <strong>Tbilisi</strong>
-                        <p>Vera / Vake area</p>
+                        <strong>Tbilisi, Vake</strong>
+                        <p data-i18n="locationAddress">Пример адреса: Chavchavadze Ave, 34</p>
+                    </div>
+
+                    <div class="location-info">
+                        <h3>Luna Pilates Studio</h3>
+                        <p data-i18n="locationText">Демо-локация для концепта. В реальном проекте здесь будет точный
+                            адрес, карта и маршрут.</p>
+                        <a class="btn btn-outline"
+                            href="https://www.google.com/maps/search/?api=1&query=Chavchavadze+Avenue+34+Tbilisi"
+                            target="_blank" rel="noopener" data-i18n="mapBtn">
+                            Открыть в Google Maps
+                        </a>
                     </div>
                 </div>
             </section>
 
-            <section id="booking" class="section booking-section">
-                <div class="booking-card">
-                    <div class="booking-info">
-                        <span class="section-kicker" data-i18n="booking_kicker">Booking request</span>
-                        <h2 data-i18n="booking_title">Оставить заявку</h2>
-                        <p data-i18n="booking_text">
-                            Заполните короткую форму — администратор свяжется с вами для подтверждения времени.
+            <section id="faq" class="section">
+                <div class="section-title">
+                    <span>FAQ</span>
+                    <h2 data-i18n="faqTitle">Частые вопросы</h2>
+                </div>
+
+                <div class="faq-grid">
+                    <details>
+                        <summary data-i18n="faq1q">Подойдёт ли пилатес новичкам?</summary>
+                        <p data-i18n="faq1a">Да. Для первого занятия лучше выбрать Mat Pilates Beginner или пробное
+                            занятие, чтобы instructor подобрал комфортную нагрузку.</p>
+                    </details>
+
+                    <details>
+                        <summary data-i18n="faq2q">Чем Reformer отличается от Mat Pilates?</summary>
+                        <p data-i18n="faq2a">Mat Pilates проходит на коврике, а Reformer — на специальном оборудовании с
+                            сопротивлением. Reformer помогает глубже почувствовать мышцы и точнее контролировать
+                            движение.</p>
+                    </details>
+
+                    <details>
+                        <summary data-i18n="faq3q">Можно ли заниматься при боли в спине?</summary>
+                        <p data-i18n="faq3a">Перед записью важно сообщить о боли или ограничениях. В таких случаях часто
+                            рекомендуют индивидуальную консультацию или мягкий формат Posture Care.</p>
+                    </details>
+
+                    <details>
+                        <summary data-i18n="faq4q">Что взять с собой?</summary>
+                        <p data-i18n="faq4a">Удобную одежду, воду и носки. Всё оборудование для занятия есть в студии.
                         </p>
+                    </details>
 
-                        <div class="booking-note">
-                            <strong data-i18n="booking_note_title">Demo note:</strong>
-                            <span data-i18n="booking_note_text">в реальном проекте заявка может приходить в Telegram,
-                                Google Sheets или email.</span>
-                        </div>
-                    </div>
+                    <details>
+                        <summary data-i18n="faq5q">Сколько длится занятие?</summary>
+                        <p data-i18n="faq5a">Обычно занятие длится 50–55 минут. Индивидуальные сессии могут длиться до
+                            60 минут.</p>
+                    </details>
 
-                    <form id="bookingForm" class="booking-form">
-                        <label>
-                            <span data-i18n="form_name">Name</span>
-                            <input type="text" name="name" placeholder="Anna" required />
-                        </label>
+                    <details>
+                        <summary data-i18n="faq6q">Нужна ли предварительная запись?</summary>
+                        <p data-i18n="faq6a">Да, места в группах ограничены. Лучше отправить заявку заранее и дождаться
+                            подтверждения от администратора.</p>
+                    </details>
 
-                        <label>
-                            <span data-i18n="form_contact">Phone / Telegram / WhatsApp</span>
-                            <input type="text" name="contact" placeholder="@username or +995..." required />
-                        </label>
+                    <details>
+                        <summary data-i18n="faq7q">Можно ли прийти на пробное занятие?</summary>
+                        <p data-i18n="faq7a">Да, пробное занятие помогает понять формат, познакомиться со студией и
+                            выбрать подходящее направление.</p>
+                    </details>
 
-                        <label>
-                            <span data-i18n="form_class">Preferred class</span>
-                            <select name="classType">
-                                <option value="Trial class">Trial class</option>
-                                <option value="Mat Pilates">Mat Pilates</option>
-                                <option value="Reformer Pilates">Reformer Pilates</option>
-                                <option value="Stretch & Mobility">Stretch & Mobility</option>
-                                <option value="Private Session">Private Session</option>
-                            </select>
-                        </label>
+                    <details>
+                        <summary data-i18n="faq8q">Какие языки доступны?</summary>
+                        <p data-i18n="faq8a">В демо-концепте доступны русский и английский языки. В реальном проекте
+                            можно добавить язык под аудиторию бизнеса.</p>
+                    </details>
 
-                        <label>
-                            <span data-i18n="form_time">Preferred date / time</span>
-                            <input type="text" name="preferredTime" placeholder="Monday, 18:30" />
-                        </label>
+                    <details>
+                        <summary data-i18n="faq9q">Можно ли выбрать тренера?</summary>
+                        <p data-i18n="faq9a">Да, клиент может выбрать instructor по направлению, опыту и цели занятия.
+                        </p>
+                    </details>
 
-                        <label>
-                            <span data-i18n="form_language">Language</span>
-                            <select name="language">
-                                <option value="Russian">Russian</option>
-                                <option value="English">English</option>
-                            </select>
-                        </label>
+                    <details>
+                        <summary data-i18n="faq10q">Можно ли отменить или перенести занятие?</summary>
+                        <p data-i18n="faq10a">В демо-правилах перенос возможен заранее. В реальном проекте здесь можно
+                            указать точные условия студии.</p>
+                    </details>
+                </div>
+            </section>
 
-                        <label>
-                            <span data-i18n="form_comment">Comment</span>
-                            <textarea name="comment" rows="4" placeholder="I am a beginner"></textarea>
-                        </label>
-
-                        <button type="submit" class="primary-btn form-btn" data-i18n="form_submit">
-                            Send request
-                        </button>
-
-                        <div id="formStatus" class="form-status"></div>
-                    </form>
+            <section class="final-cta">
+                <div>
+                    <h2 data-i18n="finalTitle">Готовы к своему первому шагу?</h2>
+                    <p data-i18n="finalText">Запишитесь на пробное занятие или задайте вопрос администратору.</p>
+                </div>
+                <div class="final-actions">
+                    <button class="btn btn-primary open-booking" data-i18n="trialBtn">Записаться на пробное
+                        занятие</button>
+                    <button class="btn btn-outline open-consultation" data-i18n="consultBtn">Получить
+                        консультацию</button>
                 </div>
             </section>
 
         </main>
+    </div>
 
-        <footer class="footer">
-            <p>
-                <strong>Luna Pilates Studio</strong> — Demo Mini App Concept
-            </p>
-            <p data-i18n="footer_text">
-                Created as a sample portfolio project for local service businesses.
-            </p>
-        </footer>
+    <button class="floating-trial open-booking" data-i18n="floatingTrial">Записаться на пробное</button>
 
+    <nav class="bottom-nav">
+        <a href="#home">🏠<span data-i18n="navHome">Главная</span></a>
+        <a href="#schedule">📅<span data-i18n="navSchedule">Расписание</span></a>
+        <a href="#trainers">👤<span data-i18n="navTrainers">Тренеры</span></a>
+        <a href="#prices">🏷️<span data-i18n="navPrices">Цены</span></a>
+        <a href="#faq">❔<span>FAQ</span></a>
+        <a href="#location">📍<span data-i18n="navContacts">Контакты</span></a>
+    </nav>
+
+    <div class="modal" id="bookingModal">
+        <div class="modal-card">
+            <button class="modal-close" id="modalClose">×</button>
+
+            <div class="modal-head">
+                <img src="/static/images/logo.png" alt="Luna Pilates logo" />
+                <div>
+                    <h2 data-i18n="bookingTitle">Запись на занятие</h2>
+                    <p data-i18n="bookingSubtitle">Выберите направление, тренера и удобное время.</p>
+                </div>
+            </div>
+
+            <form id="bookingForm" class="booking-form">
+                <div class="form-step">
+                    <h3 data-i18n="stepDirection">1. Выберите направление</h3>
+                    <div class="choice-grid">
+                        <label><input type="radio" name="direction" value="Reformer Pilates" checked /> <span>Reformer
+                                Pilates</span></label>
+                        <label><input type="radio" name="direction" value="Mat Pilates" /> <span>Mat
+                                Pilates</span></label>
+                        <label><input type="radio" name="direction" value="Stretch & Mobility" /> <span>Stretch &
+                                Mobility</span></label>
+                    </div>
+                </div>
+
+                <div class="form-step">
+                    <h3 data-i18n="stepTrainer">2. Выберите тренера</h3>
+                    <select name="trainer">
+                        <option value="Анна">Анна — Reformer / posture</option>
+                        <option value="София">София — Mat / stretch</option>
+                        <option value="Мария">Мария — rehabilitation / core</option>
+                        <option value="Елена">Елена — mobility / anti-stress</option>
+                    </select>
+                </div>
+
+                <div class="form-step">
+                    <h3 data-i18n="stepDate">3. Выберите дату и время</h3>
+                    <div class="date-chips">
+                        <label><input type="radio" name="date" value="Monday" /> <span>Пн<br><small>19
+                                    мая</small></span></label>
+                        <label><input type="radio" name="date" value="Tuesday" /> <span>Вт<br><small>20
+                                    мая</small></span></label>
+                        <label><input type="radio" name="date" value="Wednesday" checked /> <span>Ср<br><small>21
+                                    мая</small></span></label>
+                        <label><input type="radio" name="date" value="Thursday" /> <span>Чт<br><small>22
+                                    мая</small></span></label>
+                        <label><input type="radio" name="date" value="Friday" /> <span>Пт<br><small>23
+                                    мая</small></span></label>
+                        <label><input type="radio" name="date" value="Saturday" /> <span>Сб<br><small>24
+                                    мая</small></span></label>
+                    </div>
+
+                    <div class="time-chips">
+                        <label><input type="radio" name="time" value="09:00" checked /> <span>09:00</span></label>
+                        <label><input type="radio" name="time" value="10:30" /> <span>10:30</span></label>
+                        <label><input type="radio" name="time" value="12:00" /> <span>12:00</span></label>
+                        <label><input type="radio" name="time" value="18:30" /> <span>18:30</span></label>
+                        <label><input type="radio" name="time" value="19:30" /> <span>19:30</span></label>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <label>
+                        <span data-i18n="formName">Имя</span>
+                        <input type="text" name="name" placeholder="Анна" required />
+                    </label>
+
+                    <label>
+                        <span data-i18n="formPhone">Телефон</span>
+                        <input type="text" name="phone" placeholder="+995..." />
+                    </label>
+
+                    <label>
+                        <span>Telegram / WhatsApp</span>
+                        <input type="text" name="contact" placeholder="@username или номер" required />
+                    </label>
+                </div>
+
+                <div class="goal-row">
+                    <label><input type="radio" name="goal" value="Для осанки" checked /> <span
+                            data-i18n="goalPosture">для осанки</span></label>
+                    <label><input type="radio" name="goal" value="Для гибкости" /> <span data-i18n="goalFlex">для
+                            гибкости</span></label>
+                    <label><input type="radio" name="goal" value="Для восстановления" /> <span
+                            data-i18n="goalRecovery">для восстановления</span></label>
+                </div>
+
+                <label>
+                    <span data-i18n="formComment">Комментарий</span>
+                    <textarea name="comment" rows="3" placeholder="Расскажите о себе, если есть особенности"></textarea>
+                </label>
+
+                <div class="booking-summary">
+                    <div>
+                        <b data-i18n="trialPriceTitle">Пробное занятие</b>
+                        <strong>40 ₾</strong>
+                        <small data-i18n="summaryText">55 мин · профессиональное оборудование · персональное
+                            внимание</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-i18n="confirmBtn">Подтвердить запись</button>
+                </div>
+
+                <div id="formStatus" class="form-status"></div>
+            </form>
+        </div>
     </div>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>

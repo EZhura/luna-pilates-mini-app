@@ -8,203 +8,185 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const translations = {
         ru: {
-            hero_eyebrow: "Pilates & mindful movement",
-            hero_title: "Студия пилатеса в одной красивой ссылке",
-            hero_subtitle: "Направления, цены, расписание, FAQ, адрес и заявка на пробное занятие — всё в одном Mini App.",
-            hero_cta: "Записаться на пробное",
-            hero_secondary: "Смотреть направления",
-            trust_lang: "языки",
-            trust_sections: "разделов",
-            trust_link: "для bio",
-            hero_card_text: "Ваш проводник в мире Pilates",
-            quick_schedule: "Расписание",
-            quick_classes: "Направления",
-            quick_prices: "Цены",
-            quick_booking: "Запись",
+            heroKicker: "Pilates & mindful movement",
+            heroTitle: "Баланс. Сила. Лёгкость.",
+            heroText: "Студия пилатеса и осознанного движения для тела и души.",
+            trialBtn: "Записаться на пробное занятие",
+            consultBtn: "Получить консультацию",
 
-            intro_kicker: "About the studio",
-            intro_title: "Мягкий путь к силе, осанке и спокойствию",
-            intro_text: "Luna Pilates — демо-концепт для студии пилатеса и wellness-направления. Такой Mini App можно поставить в Instagram bio, WhatsApp, Google Maps или отправлять клиентам в переписке.",
+            scheduleKicker: "Schedule",
+            scheduleTitle: "Расписание",
+            scheduleText: "Выберите направление и посмотрите доступные группы.",
 
-            benefit_1_title: "Понятная структура",
-            benefit_1_text: "Клиент быстро видит направления, цены и как записаться.",
-            benefit_2_title: "Меньше вопросов в Direct",
-            benefit_2_text: "FAQ закрывает базовые вопросы до переписки с администратором.",
-            benefit_3_title: "Заявка в один шаг",
-            benefit_3_text: "Клиент оставляет контакт, направление и удобное время.",
+            directionsKicker: "Directions",
+            directionsTitle: "Направления",
+            reformerText: "Работа на оборудовании для глубокой проработки мышц, улучшения осанки и силы.",
+            matText: "Классический пилатес на коврике для гибкости, баланса и контроля движений.",
+            stretchText: "Мягкая растяжка, мобильность, восстановление и снятие напряжения.",
+            bookBtn: "Записаться",
 
-            classes_kicker: "Classes",
-            classes_title: "Направления",
-            classes_text: "Несколько форматов занятий для разных целей и уровня подготовки.",
-            class_mat: "Классический пилатес на коврике для укрепления мышц, осанки и контроля тела.",
-            class_reformer: "Глубокая работа с телом на реформере: сила, баланс, техника и плавность движений.",
-            class_stretch: "Мягкая растяжка, мобильность суставов и восстановление после нагрузки.",
-            class_private: "Индивидуальное занятие под цели клиента: осанка, спина, тонус, восстановление.",
-            level_beginner: "Для новичков",
-            level_popular: "Популярно",
-            level_soft: "Мягкая практика",
-            level_private: "Личный план",
+            trainersKicker: "Instructors",
+            trainersTitle: "Выбрать своего тренера",
+            trainersText: "В пилатесе тренеров часто называют instructors. Клиент может выбрать специалиста под свою цель.",
 
-            prices_kicker: "Prices",
-            prices_title: "Цены",
-            prices_text: "Демо-прайс в GEL для концепта студии в Тбилиси.",
-            price_trial_title: "Пробное занятие",
-            price_trial_text: "Пробное групповое занятие для знакомства со студией.",
-            price_single_title: "Разовое занятие",
-            price_single_text: "Разовое посещение группового занятия.",
-            price_pack_title: "Абонемент на 8 занятий",
-            price_pack_text: "Абонемент для регулярной практики и заметного результата.",
-            price_private_title: "Индивидуальное занятие",
-            price_private_text: "Индивидуальное занятие под личные цели и особенности тела.",
-            price_badge: "Лучший выбор",
+            pricesKicker: "Prices",
+            pricesTitle: "Цены",
+            trialPriceTitle: "Пробное занятие",
+            trialPriceText: "55 минут, знакомство со студией и подбор направления.",
+            singlePriceTitle: "Разовое занятие",
+            singlePriceText: "Любое направление в группе.",
+            packPriceTitle: "Абонемент 8 занятий",
+            packPriceText: "Регулярная практика и лучшая цена за занятие.",
+            privatePriceTitle: "Индивидуальная тренировка",
+            privatePriceText: "Персональная сессия с instructor.",
+            bestBadge: "Выгодно",
 
-            schedule_kicker: "Schedule",
-            schedule_title: "Расписание",
-            schedule_text: "Удобные утренние и вечерние слоты для клиентов.",
-            schedule_weekdays: "Понедельник — пятница",
-            schedule_saturday: "Суббота",
-            schedule_sunday: "Воскресенье",
-            schedule_rest: "Выходной",
+            locationKicker: "Location",
+            locationTitle: "Локация",
+            locationAddress: "Пример адреса: Chavchavadze Ave, 34",
+            locationText: "Демо-локация для концепта. В реальном проекте здесь будет точный адрес, карта и маршрут.",
+            mapBtn: "Открыть в Google Maps",
 
-            instructors_kicker: "Experience",
-            instructors_title: "Что получает клиент",
-            experience_1: "Спокойное знакомство со студией до записи.",
-            experience_2: "Понятный выбор направления без долгой переписки.",
-            experience_3: "Адрес, условия и FAQ в одном месте.",
-            experience_4: "Заявка уходит администратору в удобном формате.",
+            faqTitle: "Частые вопросы",
+            faq1q: "Подойдёт ли пилатес новичкам?",
+            faq1a: "Да. Для первого занятия лучше выбрать Mat Pilates Beginner или пробное занятие, чтобы instructor подобрал комфортную нагрузку.",
+            faq2q: "Чем Reformer отличается от Mat Pilates?",
+            faq2a: "Mat Pilates проходит на коврике, а Reformer — на специальном оборудовании с сопротивлением. Reformer помогает глубже почувствовать мышцы и точнее контролировать движение.",
+            faq3q: "Можно ли заниматься при боли в спине?",
+            faq3a: "Перед записью важно сообщить о боли или ограничениях. В таких случаях часто рекомендуют индивидуальную консультацию или мягкий формат Posture Care.",
+            faq4q: "Что взять с собой?",
+            faq4a: "Удобную одежду, воду и носки. Всё оборудование для занятия есть в студии.",
+            faq5q: "Сколько длится занятие?",
+            faq5a: "Обычно занятие длится 50–55 минут. Индивидуальные сессии могут длиться до 60 минут.",
+            faq6q: "Нужна ли предварительная запись?",
+            faq6a: "Да, места в группах ограничены. Лучше отправить заявку заранее и дождаться подтверждения от администратора.",
+            faq7q: "Можно ли прийти на пробное занятие?",
+            faq7a: "Да, пробное занятие помогает понять формат, познакомиться со студией и выбрать подходящее направление.",
+            faq8q: "Какие языки доступны?",
+            faq8a: "В демо-концепте доступны русский и английский языки. В реальном проекте можно добавить язык под аудиторию бизнеса.",
+            faq9q: "Можно ли выбрать тренера?",
+            faq9a: "Да, клиент может выбрать instructor по направлению, опыту и цели занятия.",
+            faq10q: "Можно ли отменить или перенести занятие?",
+            faq10a: "В демо-правилах перенос возможен заранее. В реальном проекте здесь можно указать точные условия студии.",
 
-            faq_title: "Частые вопросы",
-            faq_1_q: "Нужен ли опыт?",
-            faq_1_a: "Нет, новички могут начать с Mat Pilates или пробного занятия.",
-            faq_2_q: "Что взять с собой?",
-            faq_2_a: "Удобную одежду, воду и хорошее настроение. Всё оборудование есть в студии.",
-            faq_3_q: "Можно ли заниматься при боли в спине?",
-            faq_3_a: "Лучше сообщить об этом заранее. Мы рекомендуем начать с индивидуальной консультации.",
-            faq_4_q: "На каких языках проходят занятия?",
-            faq_4_a: "В демо-концепте доступны русский и английский языки.",
+            finalTitle: "Готовы к своему первому шагу?",
+            finalText: "Запишитесь на пробное занятие или задайте вопрос администратору.",
 
-            location_kicker: "Location",
-            location_title: "Локация",
-            location_text: "Tbilisi, Vera / Vake area. Точный адрес можно отправлять после подтверждения записи.",
+            floatingTrial: "Записаться на пробное",
+            navHome: "Главная",
+            navSchedule: "Расписание",
+            navTrainers: "Тренеры",
+            navPrices: "Цены",
+            navContacts: "Контакты",
 
-            booking_kicker: "Booking request",
-            booking_title: "Оставить заявку",
-            booking_text: "Заполните короткую форму — администратор свяжется с вами для подтверждения времени.",
-            booking_note_title: "Demo note:",
-            booking_note_text: "в реальном проекте заявка может приходить в Telegram, Google Sheets или email.",
-            form_name: "Имя",
-            form_contact: "Телефон / Telegram / WhatsApp",
-            form_class: "Направление",
-            form_time: "Желаемая дата / время",
-            form_language: "Язык",
-            form_comment: "Комментарий",
-            form_submit: "Отправить заявку",
+            bookingTitle: "Запись на занятие",
+            bookingSubtitle: "Выберите направление, тренера и удобное время.",
+            stepDirection: "1. Выберите направление",
+            stepTrainer: "2. Выберите тренера",
+            stepDate: "3. Выберите дату и время",
+            formName: "Имя",
+            formPhone: "Телефон",
+            goalPosture: "для осанки",
+            goalFlex: "для гибкости",
+            goalRecovery: "для восстановления",
+            formComment: "Комментарий",
+            summaryText: "55 мин · профессиональное оборудование · персональное внимание",
+            confirmBtn: "Подтвердить запись",
 
-            footer_text: "Created as a sample portfolio project for local service businesses.",
-
-            form_success: "Спасибо! Заявка отправлена.",
-            form_demo_success: "Спасибо! Демо-заявка создана.",
-            form_error: "Не удалось отправить заявку. Попробуйте позже."
+            sending: "Отправляем...",
+            success: "Спасибо! Заявка отправлена.",
+            error: "Не удалось отправить заявку. Попробуйте позже."
         },
 
         en: {
-            hero_eyebrow: "Pilates & mindful movement",
-            hero_title: "A pilates studio in one elegant link",
-            hero_subtitle: "Classes, prices, schedule, FAQ, location and a booking request — all inside one Mini App.",
-            hero_cta: "Book a trial class",
-            hero_secondary: "View classes",
-            trust_lang: "languages",
-            trust_sections: "sections",
-            trust_link: "for bio",
-            hero_card_text: "Your guide to the world of Pilates",
-            quick_schedule: "Schedule",
-            quick_classes: "Classes",
-            quick_prices: "Prices",
-            quick_booking: "Booking",
+            heroKicker: "Pilates & mindful movement",
+            heroTitle: "Balance. Strength. Lightness.",
+            heroText: "A pilates and mindful movement studio for body and soul.",
+            trialBtn: "Book a trial class",
+            consultBtn: "Get a consultation",
 
-            intro_kicker: "About the studio",
-            intro_title: "A soft path to strength, posture and calm",
-            intro_text: "Luna Pilates is a demo concept for a pilates and wellness studio. This Mini App can be placed in Instagram bio, WhatsApp, Google Maps or sent to clients in chat.",
+            scheduleKicker: "Schedule",
+            scheduleTitle: "Schedule",
+            scheduleText: "Choose a direction and view available groups.",
 
-            benefit_1_title: "Clear structure",
-            benefit_1_text: "Clients quickly understand classes, prices and how to book.",
-            benefit_2_title: "Fewer Direct questions",
-            benefit_2_text: "FAQ answers basic questions before the client contacts the admin.",
-            benefit_3_title: "One-step request",
-            benefit_3_text: "The client leaves contact details, class type and preferred time.",
+            directionsKicker: "Directions",
+            directionsTitle: "Directions",
+            reformerText: "Equipment-based practice for deep muscle work, better posture and strength.",
+            matText: "Classic mat pilates for flexibility, balance and movement control.",
+            stretchText: "Soft stretching, mobility, recovery and tension release.",
+            bookBtn: "Book",
 
-            classes_kicker: "Classes",
-            classes_title: "Class formats",
-            classes_text: "Several class formats for different goals and experience levels.",
-            class_mat: "Classic mat pilates for strength, posture and body control.",
-            class_reformer: "Deep body work on the reformer: strength, balance, technique and fluid movement.",
-            class_stretch: "Soft stretching, joint mobility and recovery after training.",
-            class_private: "A private session based on the client’s goals: posture, back care, tone and recovery.",
-            level_beginner: "Beginner friendly",
-            level_popular: "Most popular",
-            level_soft: "Soft practice",
-            level_private: "Personal plan",
+            trainersKicker: "Instructors",
+            trainersTitle: "Choose your instructor",
+            trainersText: "In pilates, teachers are often called instructors. Clients can choose a specialist for their goal.",
 
-            prices_kicker: "Prices",
-            prices_title: "Prices",
-            prices_text: "Demo pricing in GEL for a Tbilisi studio concept.",
-            price_trial_title: "Trial class",
-            price_trial_text: "A first group class to get to know the studio.",
-            price_single_title: "Single class",
-            price_single_text: "One group class visit.",
-            price_pack_title: "8 classes package",
-            price_pack_text: "A package for regular practice and visible progress.",
-            price_private_title: "Private session",
-            price_private_text: "A personal class based on individual goals and body needs.",
-            price_badge: "Best choice",
+            pricesKicker: "Prices",
+            pricesTitle: "Prices",
+            trialPriceTitle: "Trial class",
+            trialPriceText: "55 minutes, studio introduction and direction selection.",
+            singlePriceTitle: "Single class",
+            singlePriceText: "Any group direction.",
+            packPriceTitle: "8 classes package",
+            packPriceText: "Regular practice and the best price per class.",
+            privatePriceTitle: "Private session",
+            privatePriceText: "A personal session with an instructor.",
+            bestBadge: "Best value",
 
-            schedule_kicker: "Schedule",
-            schedule_title: "Schedule",
-            schedule_text: "Convenient morning and evening slots for clients.",
-            schedule_weekdays: "Monday — Friday",
-            schedule_saturday: "Saturday",
-            schedule_sunday: "Sunday",
-            schedule_rest: "Rest day",
+            locationKicker: "Location",
+            locationTitle: "Location",
+            locationAddress: "Example address: Chavchavadze Ave, 34",
+            locationText: "Demo location for the concept. In a real project, this block includes the exact address, map and route.",
+            mapBtn: "Open in Google Maps",
 
-            instructors_kicker: "Experience",
-            instructors_title: "What the client gets",
-            experience_1: "A calm introduction to the studio before booking.",
-            experience_2: "A clear choice of classes without long messaging.",
-            experience_3: "Location, terms and FAQ in one place.",
-            experience_4: "The request goes to the admin in a convenient format.",
+            faqTitle: "Frequently asked questions",
+            faq1q: "Is pilates suitable for beginners?",
+            faq1a: "Yes. For the first visit, Mat Pilates Beginner or a trial class is a good choice, so the instructor can select a comfortable level.",
+            faq2q: "What is the difference between Reformer and Mat Pilates?",
+            faq2a: "Mat Pilates is done on a mat, while Reformer Pilates uses special equipment with resistance. It helps clients feel muscles more deeply and control movement more precisely.",
+            faq3q: "Can I join if I have back pain?",
+            faq3a: "Please tell us about pain or limitations before booking. In such cases, a private consultation or soft Posture Care format may be recommended.",
+            faq4q: "What should I bring?",
+            faq4a: "Comfortable clothes, water and socks. All equipment is available in the studio.",
+            faq5q: "How long is a class?",
+            faq5a: "A class usually lasts 50–55 minutes. Private sessions may last up to 60 minutes.",
+            faq6q: "Do I need to book in advance?",
+            faq6a: "Yes, group spots are limited. It is better to send a request in advance and wait for confirmation from the admin.",
+            faq7q: "Can I book a trial class?",
+            faq7a: "Yes, a trial class helps you understand the format, meet the studio and choose the right direction.",
+            faq8q: "What languages are available?",
+            faq8a: "In this demo concept, Russian and English are available. In a real project, more languages can be added for the business audience.",
+            faq9q: "Can I choose an instructor?",
+            faq9a: "Yes, the client can choose an instructor by direction, experience and class goal.",
+            faq10q: "Can I cancel or reschedule a class?",
+            faq10a: "In this demo, rescheduling is possible in advance. In a real project, exact studio rules can be added here.",
 
-            faq_title: "Frequently asked questions",
-            faq_1_q: "Do I need experience?",
-            faq_1_a: "No, beginners can start with Mat Pilates or a trial class.",
-            faq_2_q: "What should I bring?",
-            faq_2_a: "Comfortable clothes, water and a good mood. All equipment is available in the studio.",
-            faq_3_q: "Can I join if I have back pain?",
-            faq_3_a: "Please tell us before the class. We recommend starting with a private consultation.",
-            faq_4_q: "What languages are available?",
-            faq_4_a: "In this demo concept, Russian and English are available.",
+            finalTitle: "Ready for your first step?",
+            finalText: "Book a trial class or ask the admin a question.",
 
-            location_kicker: "Location",
-            location_title: "Location",
-            location_text: "Tbilisi, Vera / Vake area. The exact address can be sent after booking confirmation.",
+            floatingTrial: "Book a trial",
+            navHome: "Home",
+            navSchedule: "Schedule",
+            navTrainers: "Instructors",
+            navPrices: "Prices",
+            navContacts: "Contacts",
 
-            booking_kicker: "Booking request",
-            booking_title: "Send a request",
-            booking_text: "Fill in a short form — the admin will contact you to confirm the time.",
-            booking_note_title: "Demo note:",
-            booking_note_text: "in a real project, requests can go to Telegram, Google Sheets or email.",
-            form_name: "Name",
-            form_contact: "Phone / Telegram / WhatsApp",
-            form_class: "Preferred class",
-            form_time: "Preferred date / time",
-            form_language: "Language",
-            form_comment: "Comment",
-            form_submit: "Send request",
+            bookingTitle: "Class booking",
+            bookingSubtitle: "Choose a direction, instructor and convenient time.",
+            stepDirection: "1. Choose a direction",
+            stepTrainer: "2. Choose an instructor",
+            stepDate: "3. Choose date and time",
+            formName: "Name",
+            formPhone: "Phone",
+            goalPosture: "posture",
+            goalFlex: "flexibility",
+            goalRecovery: "recovery",
+            formComment: "Comment",
+            summaryText: "55 min · professional equipment · personal attention",
+            confirmBtn: "Confirm booking",
 
-            footer_text: "Created as a sample portfolio project for local service businesses.",
-
-            form_success: "Thank you! Your request has been sent.",
-            form_demo_success: "Thank you! Demo request created.",
-            form_error: "Could not send the request. Please try again later."
+            sending: "Sending...",
+            success: "Thank you! Your request has been sent.",
+            error: "Could not send the request. Please try again later."
         }
     };
 
@@ -216,10 +198,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.querySelectorAll("[data-i18n]").forEach((element) => {
             const key = element.getAttribute("data-i18n");
-            const value = translations[lang][key];
-
-            if (value) {
-                element.textContent = value;
+            if (translations[lang][key]) {
+                element.textContent = translations[lang][key];
             }
         });
 
@@ -234,59 +214,118 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+            const target = tab.dataset.schedule;
+
+            document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
+            document.querySelectorAll(".schedule-panel").forEach((panel) => panel.classList.remove("active"));
+
+            tab.classList.add("active");
+            document.getElementById(`schedule-${target}`).classList.add("active");
+        });
+    });
+
+    const modal = document.getElementById("bookingModal");
+    const closeButton = document.getElementById("modalClose");
     const form = document.getElementById("bookingForm");
     const status = document.getElementById("formStatus");
 
-    if (form) {
-        form.addEventListener("submit", async function (event) {
-            event.preventDefault();
+    function openModal() {
+        modal.classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
 
-            status.classList.remove("error");
-            status.textContent = currentLang === "ru" ? "Отправляем..." : "Sending...";
+    function closeModal() {
+        modal.classList.remove("open");
+        document.body.style.overflow = "";
+    }
 
-            const formData = new FormData(form);
+    document.querySelectorAll(".open-booking, .open-consultation").forEach((button) => {
+        button.addEventListener("click", () => {
+            const direction = button.dataset.direction;
+            const trainer = button.dataset.trainer;
 
-            const payload = {
-                name: formData.get("name"),
-                contact: formData.get("contact"),
-                classType: formData.get("classType"),
-                preferredTime: formData.get("preferredTime"),
-                language: formData.get("language"),
-                comment: formData.get("comment")
-            };
-
-            try {
-                const response = await fetch("/api/booking", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await response.json();
-
-                if (!response.ok || !result.ok) {
-                    throw new Error(result.message || "Request failed");
-                }
-
-                status.textContent = translations[currentLang].form_success;
-                form.reset();
-
-                if (tg && tg.HapticFeedback) {
-                    tg.HapticFeedback.notificationOccurred("success");
-                }
-            } catch (error) {
-                console.error(error);
-                status.classList.add("error");
-                status.textContent = translations[currentLang].form_error;
-
-                if (tg && tg.HapticFeedback) {
-                    tg.HapticFeedback.notificationOccurred("error");
+            if (direction) {
+                const directionInput = form.querySelector(`input[name="direction"][value="${direction}"]`);
+                if (directionInput) {
+                    directionInput.checked = true;
                 }
             }
+
+            if (trainer) {
+                const trainerSelect = form.querySelector('select[name="trainer"]');
+                trainerSelect.value = trainer;
+            }
+
+            openModal();
         });
-    }
+    });
+
+    closeButton.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        status.classList.remove("error");
+        status.textContent = translations[currentLang].sending;
+
+        const formData = new FormData(form);
+
+        const payload = {
+            direction: formData.get("direction"),
+            trainer: formData.get("trainer"),
+            date: formData.get("date"),
+            time: formData.get("time"),
+            name: formData.get("name"),
+            phone: formData.get("phone"),
+            contact: formData.get("contact"),
+            goal: formData.get("goal"),
+            comment: formData.get("comment")
+        };
+
+        try {
+            const response = await fetch("/api/booking", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.ok) {
+                throw new Error(result.message || "Request failed");
+            }
+
+            status.textContent = translations[currentLang].success;
+
+            if (tg && tg.HapticFeedback) {
+                tg.HapticFeedback.notificationOccurred("success");
+            }
+
+            setTimeout(() => {
+                form.reset();
+                closeModal();
+                status.textContent = "";
+            }, 1400);
+        } catch (error) {
+            console.error(error);
+            status.classList.add("error");
+            status.textContent = translations[currentLang].error;
+
+            if (tg && tg.HapticFeedback) {
+                tg.HapticFeedback.notificationOccurred("error");
+            }
+        }
+    });
 
     setLanguage(currentLang);
 });
