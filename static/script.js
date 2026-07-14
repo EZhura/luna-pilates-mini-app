@@ -8,6 +8,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const translations = {
         ru: {
+            consultationTitle: "Задайте интересующий вас вопрос",
+            consultationSubtitle: "Администратор поможет выбрать направление, тренера или удобное время.",
+            questionLabel: "Ваш вопрос",
+            sendQuestionBtn: "Отправить вопрос",
+            consultationSuccess: "Спасибо! Ваш вопрос отправлен.",
+            moreBtn: "Подробнее",
+            reformerMore: "Reformer Pilates подходит тем, кто хочет укрепить глубокие мышцы, улучшить осанку и научиться точнее контролировать движение. Занятие проходит на специальном оборудовании с регулируемым сопротивлением.",
+            matMore: "Mat Pilates — хороший старт для новичков. Занятия помогают развивать гибкость, баланс, стабильность корпуса и мягко укреплять тело без перегрузки.",
+            stretchMore: "Stretch & Mobility помогает снять напряжение, улучшить подвижность суставов и восстановиться после нагрузки. Подходит для мягкой практики и anti-stress формата.",
+            calendarBtn: "Выбрать другую дату",
+            goalTitle: "Что бы вы хотели улучшить?",
             heroKicker: "Pilates & mindful movement",
             heroTitle: "Баланс.\nМягкая сила.\nЛёгкость движения.",
             heroText: "Студия пилатеса и осознанного движения для тела и души.",
@@ -27,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             trainersKicker: "Instructors",
             trainersTitle: "Выбрать своего тренера",
-            trainersText: "В пилатесе тренеров часто называют instructors. Клиент может выбрать специалиста под свою цель.",
+            trainersText: "Наши инструкторы будут рады помочь в достижении ваших целей.",
 
             pricesKicker: "Prices",
             pricesTitle: "Цены",
@@ -99,6 +110,17 @@ document.addEventListener("DOMContentLoaded", function () {
         },
 
         en: {
+            consultationTitle: "Ask your question",
+            consultationSubtitle: "The admin will help you choose a direction, instructor or convenient time.",
+            questionLabel: "Your question",
+            sendQuestionBtn: "Send question",
+            consultationSuccess: "Thank you! Your question has been sent.",
+            moreBtn: "More details",
+            reformerMore: "Reformer Pilates is ideal for strengthening deep muscles, improving posture and learning precise movement control. The class uses special equipment with adjustable resistance.",
+            matMore: "Mat Pilates is a good starting point for beginners. It helps develop flexibility, balance, core stability and gentle strength without overload.",
+            stretchMore: "Stretch & Mobility helps release tension, improve joint mobility and recover after training. It is suitable for soft practice and anti-stress sessions.",
+            calendarBtn: "Choose another date",
+            goalTitle: "What would you like to improve?",
             heroKicker: "Pilates & mindful movement",
             heroTitle: "Balance.\nSoft strength.\nEase of movement.",
             heroText: "A pilates and mindful movement studio for body and soul.",
@@ -118,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             trainersKicker: "Instructors",
             trainersTitle: "Choose your instructor",
-            trainersText: "In pilates, teachers are often called instructors. Clients can choose a specialist for their goal.",
+            trainersText: "Our instructors will be happy to help you reach your goals.",
 
             pricesKicker: "Prices",
             pricesTitle: "Prices",
@@ -241,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.style.overflow = "";
     }
 
-    document.querySelectorAll(".open-booking, .open-consultation").forEach((button) => {
+    document.querySelectorAll(".open-booking").forEach((button) => {
         button.addEventListener("click", () => {
             const direction = button.dataset.direction;
             const trainer = button.dataset.trainer;
@@ -262,6 +284,85 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    const consultationModal = document.getElementById("consultationModal");
+    const consultationClose = document.getElementById("consultationClose");
+    const consultationForm = document.getElementById("consultationForm");
+    const consultationStatus = document.getElementById("consultationStatus");
+
+    function openConsultationModal() {
+        consultationModal.classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeConsultationModal() {
+        consultationModal.classList.remove("open");
+        document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll(".open-consultation").forEach((button) => {
+        button.addEventListener("click", openConsultationModal);
+    });
+
+    consultationClose.addEventListener("click", closeConsultationModal);
+
+    consultationModal.addEventListener("click", (event) => {
+        if (event.target === consultationModal) {
+            closeConsultationModal();
+        }
+    });
+
+    consultationForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        consultationStatus.classList.remove("error");
+        consultationStatus.textContent = translations[currentLang].sending;
+
+        const formData = new FormData(consultationForm);
+
+        const payload = {
+            requestType: "consultation",
+            name: formData.get("name"),
+            contact: formData.get("contact"),
+            question: formData.get("question")
+        };
+
+        try {
+            const response = await fetch("/api/consultation", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.ok) {
+                throw new Error(result.message || "Request failed");
+            }
+
+            consultationStatus.textContent = translations[currentLang].consultationSuccess;
+
+            if (tg && tg.HapticFeedback) {
+                tg.HapticFeedback.notificationOccurred("success");
+            }
+
+            setTimeout(() => {
+                consultationForm.reset();
+                closeConsultationModal();
+                consultationStatus.textContent = "";
+            }, 1400);
+        } catch (error) {
+            console.error(error);
+            consultationStatus.classList.add("error");
+            consultationStatus.textContent = translations[currentLang].error;
+
+            if (tg && tg.HapticFeedback) {
+                tg.HapticFeedback.notificationOccurred("error");
+            }
+        }
+    });
+
     closeButton.addEventListener("click", closeModal);
 
     modal.addEventListener("click", (event) => {
@@ -269,7 +370,24 @@ document.addEventListener("DOMContentLoaded", function () {
             closeModal();
         }
     });
+    const calendarToggle = document.getElementById("calendarToggle");
+    const customDate = document.getElementById("customDate");
 
+    if (calendarToggle && customDate) {
+        calendarToggle.addEventListener("click", () => {
+            customDate.classList.toggle("visible");
+
+            if (customDate.classList.contains("visible")) {
+                customDate.focus();
+            }
+        });
+
+        customDate.addEventListener("change", () => {
+            document.querySelectorAll('input[name="date"]').forEach((input) => {
+                input.checked = false;
+            });
+        });
+    }
     form.addEventListener("submit", async function (event) {
         event.preventDefault();
 
@@ -281,7 +399,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const payload = {
             direction: formData.get("direction"),
             trainer: formData.get("trainer"),
-            date: formData.get("date"),
+            date: formData.get("customDate") || formData.get("date"),
             time: formData.get("time"),
             name: formData.get("name"),
             phone: formData.get("phone"),

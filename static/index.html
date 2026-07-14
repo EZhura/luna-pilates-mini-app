@@ -141,6 +141,17 @@
                             <h3>Reformer Pilates</h3>
                             <p data-i18n="reformerText">Работа на оборудовании для глубокой проработки мышц, улучшения
                                 осанки и силы.</p>
+                            <details class="direction-details">
+                                <summary data-i18n="moreBtn">Подробнее</summary>
+                                <p data-i18n="reformerMore">
+                                    Reformer Pilates подходит тем, кто хочет укрепить глубокие мышцы, улучшить
+                                    осанку и научиться точнее контролировать движение. Занятие проходит на
+                                    специальном оборудовании с регулируемым сопротивлением.
+                                </p>
+                            </details>
+
+                            <button class="link-btn open-booking" data-direction="Reformer Pilates"
+                                data-i18n="bookBtn">Записаться</button>
                             <button class="link-btn open-booking" data-direction="Reformer Pilates"
                                 data-i18n="bookBtn">Записаться</button>
                         </div>
@@ -153,6 +164,16 @@
                             <h3>Mat Pilates</h3>
                             <p data-i18n="matText">Классический пилатес на коврике для гибкости, баланса и контроля
                                 движений.</p>
+                            <details class="direction-details">
+                                <summary data-i18n="moreBtn">Подробнее</summary>
+                                <p data-i18n="matMore">
+                                    Mat Pilates — хороший старт для новичков. Занятия помогают развивать гибкость,
+                                    баланс, стабильность корпуса и мягко укреплять тело без перегрузки.
+                                </p>
+                            </details>
+
+                            <button class="link-btn open-booking" data-direction="Mat Pilates"
+                                data-i18n="bookBtn">Записаться</button>
                             <button class="link-btn open-booking" data-direction="Mat Pilates"
                                 data-i18n="bookBtn">Записаться</button>
                         </div>
@@ -165,6 +186,16 @@
                             <h3>Stretch & Mobility</h3>
                             <p data-i18n="stretchText">Мягкая растяжка, мобильность, восстановление и снятие напряжения.
                             </p>
+                            <details class="direction-details">
+                                <summary data-i18n="moreBtn">Подробнее</summary>
+                                <p data-i18n="stretchMore">
+                                    Stretch & Mobility помогает снять напряжение, улучшить подвижность суставов и
+                                    восстановиться после нагрузки. Подходит для мягкой практики и anti-stress формата.
+                                </p>
+                            </details>
+
+                            <button class="link-btn open-booking" data-direction="Stretch & Mobility"
+                                data-i18n="bookBtn">Записаться</button>
                             <button class="link-btn open-booking" data-direction="Stretch & Mobility"
                                 data-i18n="bookBtn">Записаться</button>
                         </div>
@@ -181,8 +212,7 @@
                 <div class="section-title">
                     <span data-i18n="trainersKicker">Instructors</span>
                     <h2 data-i18n="trainersTitle">Выбрать своего тренера</h2>
-                    <p data-i18n="trainersText">В пилатесе тренеров часто называют instructors. Клиент может выбрать
-                        специалиста под свою цель.</p>
+                    <p data-i18n="trainersText">Наши инструкторы будут рады помочь в достижении ваших целей.</p>
                 </div>
 
                 <div class="trainer-grid">
@@ -451,18 +481,26 @@
                 <div class="form-step">
                     <h3 data-i18n="stepDate">3. Выберите дату и время</h3>
                     <div class="date-chips">
-                        <label><input type="radio" name="date" value="Monday" /> <span>Пн<br><small>19
+                        <label><input type="radio" name="date" value="Monday, 19 May" /> <span>Пн<br><small>19
                                     мая</small></span></label>
-                        <label><input type="radio" name="date" value="Tuesday" /> <span>Вт<br><small>20
+                        <label><input type="radio" name="date" value="Tuesday, 20 May" /> <span>Вт<br><small>20
                                     мая</small></span></label>
-                        <label><input type="radio" name="date" value="Wednesday" checked /> <span>Ср<br><small>21
+                        <label><input type="radio" name="date" value="Wednesday, 21 May" checked />
+                            <span>Ср<br><small>21 мая</small></span></label>
+                        <label><input type="radio" name="date" value="Thursday, 22 May" /> <span>Чт<br><small>22
                                     мая</small></span></label>
-                        <label><input type="radio" name="date" value="Thursday" /> <span>Чт<br><small>22
+                        <label><input type="radio" name="date" value="Friday, 23 May" /> <span>Пт<br><small>23
                                     мая</small></span></label>
-                        <label><input type="radio" name="date" value="Friday" /> <span>Пт<br><small>23
+                        <label><input type="radio" name="date" value="Saturday, 24 May" /> <span>Сб<br><small>24
                                     мая</small></span></label>
-                        <label><input type="radio" name="date" value="Saturday" /> <span>Сб<br><small>24
-                                    мая</small></span></label>
+                    </div>
+
+                    <div class="calendar-row">
+                        <button type="button" class="calendar-toggle" id="calendarToggle" data-i18n="calendarBtn">
+                            Выбрать другую дату
+                        </button>
+
+                        <input type="date" name="customDate" id="customDate" class="custom-date" />
                     </div>
 
                     <div class="time-chips">
@@ -490,7 +528,7 @@
                         <input type="text" name="contact" placeholder="@username или номер" required />
                     </label>
                 </div>
-
+                <div class="goal-title" data-i18n="goalTitle">Что бы вы хотели улучшить?</div>
                 <div class="goal-row">
                     <label><input type="radio" name="goal" value="Для осанки" checked /> <span
                             data-i18n="goalPosture">для осанки</span></label>
@@ -516,6 +554,45 @@
                 </div>
 
                 <div id="formStatus" class="form-status"></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="consultationModal">
+        <div class="modal-card consultation-card">
+            <button class="modal-close" id="consultationClose">×</button>
+
+            <div class="modal-head">
+                <img src="/static/images/logo.png" alt="Luna Pilates logo" />
+                <div>
+                    <h2 data-i18n="consultationTitle">Задайте интересующий вас вопрос</h2>
+                    <p data-i18n="consultationSubtitle">Администратор поможет выбрать направление, тренера или удобное
+                        время.</p>
+                </div>
+            </div>
+
+            <form id="consultationForm" class="booking-form">
+                <div class="form-grid consultation-grid">
+                    <label>
+                        <span data-i18n="formName">Имя</span>
+                        <input type="text" name="name" placeholder="Анна" required />
+                    </label>
+
+                    <label>
+                        <span>Telegram / WhatsApp</span>
+                        <input type="text" name="contact" placeholder="@username или номер" required />
+                    </label>
+                </div>
+
+                <label>
+                    <span data-i18n="questionLabel">Ваш вопрос</span>
+                    <textarea name="question" rows="5" placeholder="Например: какое направление лучше выбрать новичку?"
+                        required></textarea>
+                </label>
+
+                <button type="submit" class="btn btn-primary" data-i18n="sendQuestionBtn">Отправить вопрос</button>
+
+                <div id="consultationStatus" class="form-status"></div>
             </form>
         </div>
     </div>

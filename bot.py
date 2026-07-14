@@ -133,6 +133,64 @@ def booking_request():
         }
     )
 
+@app.route("/api/consultation", methods=["POST"])
+def consultation_request():
+    data = request.get_json(silent=True) or {}
+
+    name = safe_text(data.get("name"))
+    contact = safe_text(data.get("contact"))
+    question = safe_text(data.get("question"))
+
+    if not name or not contact or not question:
+        return jsonify(
+            {
+                "ok": False,
+                "message": "Please add your name, contact and question.",
+            }
+        ), 400
+
+    created_at = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+
+    message = f"""
+💬 <b>New Luna Pilates consultation request</b>
+
+<b>Name:</b> {name}
+<b>Telegram / WhatsApp:</b> {contact}
+
+<b>Question:</b>
+{question}
+
+<i>Sent from Luna Pilates Mini App</i>
+<i>{created_at}</i>
+""".strip()
+
+    if BOT_TOKEN and ADMIN_CHAT_ID:
+        result = run_async(
+            telegram_api(
+                "sendMessage",
+                {
+                    "chat_id": ADMIN_CHAT_ID,
+                    "text": message,
+                    "parse_mode": "HTML",
+                },
+            )
+        )
+
+        if not result.get("ok"):
+            return jsonify(
+                {
+                    "ok": False,
+                    "message": "Consultation request was created, but Telegram notification failed.",
+                    "details": result,
+                }
+            ), 500
+
+    return jsonify(
+        {
+            "ok": True,
+            "message": "Thank you! Your question has been sent.",
+        }
+    )
 
 @app.route("/telegram/webhook", methods=["POST"])
 def telegram_webhook():
