@@ -127,3 +127,27 @@
   }
   .final-actions .btn{width:100%;white-space:normal}
 }
+
+/* v5 — booking logic and spacing polish */
+.form-step{display:flex;flex-direction:column;gap:14px}
+.form-step h3{margin:0 0 2px}
+.auto-trainer{display:grid;gap:4px;border:1px solid var(--line);background:#fff;border-radius:14px;padding:16px 18px}
+.auto-trainer strong{font-size:17px;color:var(--ink)}
+.auto-trainer span{color:var(--rose-dark);font-weight:600}
+.auto-trainer small{color:var(--muted);line-height:1.45;margin-top:2px}
+.booking-schedule-step{gap:12px}
+.field-caption{font-size:13px;color:var(--muted);font-weight:600;margin-top:2px}
+.booking-schedule-step .date-chips{margin-bottom:2px}
+.custom-date-row{margin-top:4px;margin-bottom:2px}
+.custom-date-label{margin-bottom:8px;color:var(--ink)}
+.calendar-date-field{margin-bottom:6px}
+.date-validation{min-height:18px;color:#a64e4e;font-size:13px;line-height:1.4}
+.time-block{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.time-chips{min-height:48px}
+.goal-title{margin-top:4px;font-size:16px}
+.goal-row{margin-top:-4px}
+
+@media(max-width:720px){
+  .auto-trainer{padding:14px}
+  .choice-grid span,.goal-row span,.date-chips span,.time-chips span{padding:10px 12px}
+}

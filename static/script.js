@@ -102,18 +102,22 @@ document.addEventListener("DOMContentLoaded", function () {
             navContacts: "Контакты",
 
             bookingTitle: "Запись на занятие",
-            bookingSubtitle: "Выберите направление, инструктора и удобное время.",
+            bookingSubtitle: "Выберите направление — мы покажем инструктора и доступное время.",
             stepDirection: "1. Выберите направление",
-            stepTrainer: "2. Выберите инструктора",
+            stepTrainer: "2. Ваш инструктор",
             stepDate: "3. Выберите дату и время",
+            autoTrainerHint: "Инструктор подбирается автоматически по выбранному направлению.",
+            availableDates: "Ближайшие даты по расписанию",
+            availableTimes: "Доступное время",
+            noClassesDate: "На эту дату занятий выбранного направления нет. Выберите другую дату.",
             calendarShort: "Выбрать",
             calendarSmall: "другую дату",
             formName: "Имя",
             formPhone: "Телефон",
-            goalTitle: "Что бы вы хотели улучшить?",
-            goalPosture: "для осанки",
-            goalFlex: "для гибкости",
-            goalRecovery: "для восстановления",
+            goalTitle: "Для чего вам нужны занятия?",
+            goalPosture: "Улучшить осанку",
+            goalFlex: "Развить гибкость",
+            goalRecovery: "Восстановиться и снять напряжение",
             formComment: "Комментарий",
             summaryText: "55 мин · профессиональное оборудование · персональное внимание",
             confirmBtn: "Подтвердить запись",
@@ -224,18 +228,22 @@ document.addEventListener("DOMContentLoaded", function () {
             navContacts: "Contacts",
 
             bookingTitle: "Class booking",
-            bookingSubtitle: "Choose a direction, instructor and convenient time.",
+            bookingSubtitle: "Choose a direction — we’ll show the instructor and available times.",
             stepDirection: "1. Choose a direction",
-            stepTrainer: "2. Choose an instructor",
+            stepTrainer: "2. Your instructor",
             stepDate: "3. Choose date and time",
+            autoTrainerHint: "The instructor is selected automatically for the chosen direction.",
+            availableDates: "Next dates from the schedule",
+            availableTimes: "Available times",
+            noClassesDate: "There are no classes for this direction on this date. Please choose another date.",
             calendarShort: "Choose",
             calendarSmall: "another date",
             formName: "Name",
             formPhone: "Phone",
-            goalTitle: "What would you like to improve?",
-            goalPosture: "posture",
-            goalFlex: "flexibility",
-            goalRecovery: "recovery",
+            goalTitle: "What would you like classes to help with?",
+            goalPosture: "Improve posture",
+            goalFlex: "Build flexibility",
+            goalRecovery: "Recover and release tension",
             formComment: "Comment",
             summaryText: "55 min · professional equipment · personal attention",
             confirmBtn: "Confirm booking",
@@ -268,6 +276,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".lang-btn").forEach((button) => {
             button.classList.toggle("active", button.dataset.lang === lang);
         });
+
+        if (typeof refreshBookingLogic === "function" && document.getElementById("bookingForm")) {
+            refreshBookingLogic();
+        }
     }
 
     document.querySelectorAll(".lang-btn").forEach((button) => {
@@ -292,8 +304,180 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeButton = document.getElementById("modalClose");
     const form = document.getElementById("bookingForm");
     const status = document.getElementById("formStatus");
+    const bookingTrainer = document.getElementById("bookingTrainer");
+    const autoTrainerName = document.getElementById("autoTrainerName");
+    const autoTrainerMeta = document.getElementById("autoTrainerMeta");
+    const bookingDateChips = document.getElementById("bookingDateChips");
+    const bookingTimeChips = document.getElementById("bookingTimeChips");
+    const customDate = document.getElementById("customDate");
+    const customDateRow = document.getElementById("customDateRow");
+    const dateValidation = document.getElementById("dateValidation");
+
+    const bookingRules = {
+        "Reformer Pilates": {
+            trainer: "Анна",
+            meta: { ru: "Reformer Pilates · осанка и сила", en: "Reformer Pilates · posture & strength" },
+            schedule: {
+                1: ["08:00", "18:30"],
+                2: ["10:30", "19:00"],
+                3: ["09:00", "18:30"],
+                4: ["10:00", "19:30"],
+                5: ["08:00", "18:30"],
+                6: ["10:00", "12:00"]
+            }
+        },
+        "Mat Pilates": {
+            trainer: "София",
+            meta: { ru: "Mat Pilates · техника и баланс", en: "Mat Pilates · technique & balance" },
+            schedule: {
+                1: ["09:30", "19:00"],
+                2: ["08:30", "18:30"],
+                3: ["10:30", "20:00"],
+                4: ["09:00", "18:30"],
+                5: ["10:00", "19:00"],
+                6: ["11:00"]
+            }
+        },
+        "Stretch & Mobility": {
+            trainer: "Елена",
+            meta: { ru: "Mobility · восстановление и anti-stress", en: "Mobility · recovery & anti-stress" },
+            schedule: {
+                1: ["20:00"],
+                2: ["12:00"],
+                3: ["20:00"],
+                4: ["12:00", "19:30"],
+                5: ["20:00"],
+                6: ["12:00"]
+            }
+        }
+    };
+
+    const weekdayNames = {
+        ru: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+        en: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    };
+    const monthNames = {
+        ru: ["янв", "фев", "мар", "апр", "мая", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"],
+        en: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    };
+
+    function getSelectedDirection() {
+        return form.querySelector('input[name="direction"]:checked')?.value || "Reformer Pilates";
+    }
+
+    function toLocalIsoDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+    }
+
+    function formatDateChip(date) {
+        return {
+            day: weekdayNames[currentLang][date.getDay()],
+            date: `${date.getDate()} ${monthNames[currentLang][date.getMonth()]}`
+        };
+    }
+
+    function nextAvailableDates(direction, count = 5) {
+        const availableWeekdays = Object.keys(bookingRules[direction].schedule).map(Number);
+        const dates = [];
+        const cursor = new Date();
+        cursor.setHours(12, 0, 0, 0);
+
+        for (let offset = 0; offset < 35 && dates.length < count; offset += 1) {
+            const candidate = new Date(cursor);
+            candidate.setDate(cursor.getDate() + offset);
+            if (availableWeekdays.includes(candidate.getDay())) {
+                dates.push(candidate);
+            }
+        }
+        return dates;
+    }
+
+    function renderTimesForDate(dateValue) {
+        bookingTimeChips.innerHTML = "";
+        if (!dateValue) return;
+
+        const date = new Date(`${dateValue}T12:00:00`);
+        const rule = bookingRules[getSelectedDirection()];
+        const times = rule.schedule[date.getDay()] || [];
+
+        if (!times.length) {
+            dateValidation.textContent = translations[currentLang].noClassesDate;
+            return;
+        }
+
+        dateValidation.textContent = "";
+        times.forEach((time, index) => {
+            const label = document.createElement("label");
+            label.innerHTML = `<input type="radio" name="time" value="${time}" ${index === 0 ? "checked" : ""}><span>${time}</span>`;
+            bookingTimeChips.appendChild(label);
+        });
+    }
+
+    function selectRenderedDate(input) {
+        const selected = bookingDateChips.querySelector('input[name="date"]:checked');
+        if (selected && selected !== input) selected.checked = false;
+        input.checked = true;
+        customDateRow.classList.remove("visible");
+        renderTimesForDate(input.value);
+    }
+
+    function renderBookingDates() {
+        const direction = getSelectedDirection();
+        bookingDateChips.innerHTML = "";
+        customDateRow.classList.remove("visible");
+        customDate.value = "";
+        dateValidation.textContent = "";
+
+        nextAvailableDates(direction).forEach((date, index) => {
+            const formatted = formatDateChip(date);
+            const value = toLocalIsoDate(date);
+            const label = document.createElement("label");
+            label.innerHTML = `<input type="radio" name="date" value="${value}" ${index === 0 ? "checked" : ""}><span><b>${formatted.day}</b><small>${formatted.date}</small></span>`;
+            const input = label.querySelector("input");
+            input.addEventListener("change", () => selectRenderedDate(input));
+            bookingDateChips.appendChild(label);
+        });
+
+        const calendarLabel = document.createElement("label");
+        calendarLabel.className = "calendar-chip-label";
+        calendarLabel.innerHTML = `<input type="radio" name="date" value="custom" id="customDateRadio"><span class="calendar-chip"><b>${translations[currentLang].calendarShort}</b><small>${translations[currentLang].calendarSmall}</small></span>`;
+        calendarLabel.addEventListener("click", (event) => {
+            event.preventDefault();
+            const radio = calendarLabel.querySelector("input");
+            radio.checked = true;
+            customDateRow.classList.add("visible");
+            bookingTimeChips.innerHTML = "";
+            dateValidation.textContent = "";
+            setTimeout(() => {
+                customDate.focus();
+                if (customDate.showPicker) {
+                    try { customDate.showPicker(); } catch (error) { /* browser may require manual tap */ }
+                }
+            }, 80);
+        });
+        bookingDateChips.appendChild(calendarLabel);
+
+        const firstDate = bookingDateChips.querySelector('input[name="date"]:checked');
+        if (firstDate) renderTimesForDate(firstDate.value);
+    }
+
+    function updateAutoTrainer() {
+        const rule = bookingRules[getSelectedDirection()];
+        bookingTrainer.value = rule.trainer;
+        autoTrainerName.textContent = rule.trainer;
+        autoTrainerMeta.textContent = rule.meta[currentLang];
+    }
+
+    function refreshBookingLogic() {
+        updateAutoTrainer();
+        renderBookingDates();
+    }
 
     function openModal() {
+        refreshBookingLogic();
         modal.classList.add("open");
         document.body.style.overflow = "hidden";
     }
@@ -303,21 +487,22 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.style.overflow = "";
     }
 
+    form.querySelectorAll('input[name="direction"]').forEach((input) => {
+        input.addEventListener("change", refreshBookingLogic);
+    });
+
     document.querySelectorAll(".open-booking").forEach((button) => {
         button.addEventListener("click", () => {
-            const direction = button.dataset.direction;
+            let direction = button.dataset.direction;
             const trainer = button.dataset.trainer;
+
+            if (!direction && trainer) {
+                direction = Object.entries(bookingRules).find(([, rule]) => rule.trainer === trainer)?.[0];
+            }
 
             if (direction) {
                 const directionInput = form.querySelector(`input[name="direction"][value="${direction}"]`);
-                if (directionInput) {
-                    directionInput.checked = true;
-                }
-            }
-
-            if (trainer) {
-                const trainerSelect = form.querySelector('select[name="trainer"]');
-                trainerSelect.value = trainer;
+                if (directionInput) directionInput.checked = true;
             }
 
             openModal();
@@ -325,101 +510,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     closeButton.addEventListener("click", closeModal);
-
     modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            closeModal();
-        }
+        if (event.target === modal) closeModal();
     });
 
-    const customDateRadio = document.getElementById("customDateRadio");
-    const customDate = document.getElementById("customDate");
-    const calendarChip = document.getElementById("calendarChip");
-    const customDateRow = document.getElementById("customDateRow");
+    const todayIso = toLocalIsoDate(new Date());
+    customDate.min = todayIso;
+    customDate.addEventListener("change", () => {
+        if (!customDate.value) return;
+        const date = new Date(`${customDate.value}T12:00:00`);
+        const times = bookingRules[getSelectedDirection()].schedule[date.getDay()] || [];
+        const calendarDateTitle = document.getElementById("calendarDateTitle");
+        const calendarDateHint = document.getElementById("calendarDateHint");
+        const formatted = formatDateChip(date);
 
-    function formatCustomDate(value) {
-        const selectedDate = new Date(value);
-
-        if (Number.isNaN(selectedDate.getTime())) {
-            return null;
+        calendarDateTitle.textContent = `${formatted.day}, ${formatted.date}`;
+        if (times.length) {
+            calendarDateHint.textContent = currentLang === "ru" ? "Дата выбрана — доступное время ниже" : "Date selected — available times are shown below";
+            const customRadio = document.getElementById("customDateRadio");
+            if (customRadio) customRadio.checked = true;
+            renderTimesForDate(customDate.value);
+        } else {
+            calendarDateHint.textContent = translations[currentLang].noClassesDate;
+            bookingTimeChips.innerHTML = "";
+            dateValidation.textContent = translations[currentLang].noClassesDate;
         }
-
-        const weekdaysRu = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
-        const monthsRu = [
-            "янв", "фев", "мар", "апр", "мая", "июн",
-            "июл", "авг", "сен", "окт", "ноя", "дек"
-        ];
-
-        const weekdaysEn = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        const monthsEn = [
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-        ];
-
-        const weekdays = currentLang === "ru" ? weekdaysRu : weekdaysEn;
-        const months = currentLang === "ru" ? monthsRu : monthsEn;
-
-        return {
-            day: weekdays[selectedDate.getDay()],
-            date: `${selectedDate.getDate()} ${months[selectedDate.getMonth()]}`
-        };
-    }
-
-    if (customDateRadio && customDate && calendarChip && customDateRow) {
-        calendarChip.addEventListener("click", () => {
-            customDateRadio.checked = true;
-            customDateRow.classList.add("visible");
-
-            setTimeout(() => {
-                customDate.focus();
-
-                if (customDate.showPicker) {
-                    try {
-                        customDate.showPicker();
-                    } catch (error) {
-                        console.log("Date picker should be opened manually.");
-                    }
-                }
-            }, 100);
-        });
-
-        customDate.addEventListener("change", () => {
-            const formatted = formatCustomDate(customDate.value);
-
-            if (!formatted) {
-                return;
-            }
-
-            customDateRadio.checked = true;
-
-            calendarChip.innerHTML = `
-    <b>${formatted.day}</b>
-    <small>${formatted.date}</small>
-  `;
-
-            const calendarDateTitle = document.getElementById("calendarDateTitle");
-            const calendarDateHint = document.getElementById("calendarDateHint");
-
-            if (calendarDateTitle) {
-                calendarDateTitle.textContent = `${formatted.day}, ${formatted.date}`;
-            }
-
-            if (calendarDateHint) {
-                calendarDateHint.textContent =
-                    currentLang === "ru" ?
-                    "Дата выбрана — нажмите, чтобы изменить" :
-                    "Date selected — tap to change";
-            }
-        });
-
-        document.querySelectorAll('input[name="date"]').forEach((dateInput) => {
-            dateInput.addEventListener("change", () => {
-                if (dateInput.value !== "custom") {
-                    customDateRow.classList.remove("visible");
-                }
-            });
-        });
-    }
+    });
 
     form.addEventListener("submit", async function (event) {
         event.preventDefault();
@@ -428,12 +544,19 @@ document.addEventListener("DOMContentLoaded", function () {
         status.textContent = translations[currentLang].sending;
 
         const formData = new FormData(form);
+        const selectedDate = formData.get("date");
+        const finalDate = selectedDate === "custom" ? formData.get("customDate") : selectedDate;
+
+        if (!finalDate || !formData.get("time")) {
+            status.classList.add("error");
+            status.textContent = currentLang === "ru" ? "Выберите доступные дату и время." : "Please choose an available date and time.";
+            return;
+        }
 
         const payload = {
             direction: formData.get("direction"),
             trainer: formData.get("trainer"),
-            date: formData.get("date") === "custom" && formData.get("customDate") ?
-                formData.get("customDate") : formData.get("date"),
+            date: finalDate,
             time: formData.get("time"),
             name: formData.get("name"),
             phone: formData.get("phone"),
@@ -445,26 +568,19 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             const response = await fetch("/api/booking", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
             });
-
             const result = await response.json();
-
-            if (!response.ok || !result.ok) {
-                throw new Error(result.message || "Request failed");
-            }
+            if (!response.ok || !result.ok) throw new Error(result.message || "Request failed");
 
             status.textContent = translations[currentLang].success;
-
-            if (tg && tg.HapticFeedback) {
-                tg.HapticFeedback.notificationOccurred("success");
-            }
+            if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred("success");
 
             setTimeout(() => {
                 form.reset();
+                form.querySelector('input[name="direction"][value="Reformer Pilates"]').checked = true;
+                refreshBookingLogic();
                 closeModal();
                 status.textContent = "";
             }, 1400);
@@ -472,10 +588,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error(error);
             status.classList.add("error");
             status.textContent = translations[currentLang].error;
-
-            if (tg && tg.HapticFeedback) {
-                tg.HapticFeedback.notificationOccurred("error");
-            }
+            if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred("error");
         }
     });
 
