@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
             bookBtn: "Записаться",
 
             trainersKicker: "Instructors",
-            trainersTitle: "Выбрать своего инструктора",
+            trainersTitle: "Познакомьтесь с инструкторами",
             trainersText: "Наши инструкторы будут рады помочь в достижении ваших целей.",
 
             pricesKicker: "Prices",
@@ -93,8 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
             faq7a: "Да, пробное занятие помогает понять формат, познакомиться со студией и выбрать подходящее направление.",
             faq8q: "Какие языки доступны?",
             faq8a: "В демо-концепте доступны русский и английский языки. В реальном проекте можно добавить язык под аудиторию бизнеса.",
-            faq9q: "Можно ли выбрать инструктора?",
-            faq9a: "Да, клиент может выбрать инструктора по направлению, опыту и цели занятия.",
+            faq9q: "Как подбирается инструктор?",
+            faq9a: "Инструктор подбирается автоматически по выбранному направлению. Для индивидуальных задач можно отправить запрос на консультацию.",
             faq10q: "Можно ли отменить или перенести занятие?",
             faq10a: "В демо-правилах перенос возможен заранее. В реальном проекте здесь можно указать точные условия студии.",
 
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
             bookBtn: "Book",
 
             trainersKicker: "Instructors",
-            trainersTitle: "Choose your instructor",
+            trainersTitle: "Meet your instructors",
             trainersText: "Our instructors will be happy to help you reach your goals.",
 
             pricesKicker: "Prices",
@@ -226,8 +226,8 @@ document.addEventListener("DOMContentLoaded", function () {
             faq7a: "Yes, a trial class helps you understand the format, meet the studio and choose the right direction.",
             faq8q: "What languages are available?",
             faq8a: "In this demo concept, Russian and English are available. In a real project, more languages can be added for the business audience.",
-            faq9q: "Can I choose an instructor?",
-            faq9a: "Yes, the client can choose an instructor by direction, experience and class goal.",
+            faq9q: "How is the instructor selected?",
+            faq9a: "The instructor is selected automatically based on the chosen direction. For individual needs, you can send a consultation request.",
             faq10q: "Can I cancel or reschedule a class?",
             faq10a: "In this demo, rescheduling is possible in advance. In a real project, exact studio rules can be added here.",
 
