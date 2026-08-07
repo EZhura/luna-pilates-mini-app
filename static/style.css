@@ -54,3 +54,76 @@
   .location-info{padding:28px 24px}
   .location-photo img{height:260px}
 }
+
+/* v3 final visual balance — lighter featured pricing and CTA */
+.image-card-mat img{
+  object-fit:cover;
+  object-position:center 48%;
+  background:transparent;
+  padding:0;
+}
+
+.price-card.accent{
+  background:#efe2e6;
+  color:var(--ink);
+  border-color:#d7bdc6;
+  box-shadow:0 12px 34px rgba(125,83,98,.07);
+}
+.price-card.accent p{color:var(--muted)}
+.price-card.accent .price{color:var(--rose-dark)}
+.price-card.accent .btn{
+  background:var(--rose);
+  color:#fff;
+  border-color:var(--rose);
+}
+.price-card.accent .badge{
+  background:var(--rose-dark);
+  color:#fff;
+}
+
+.final-cta{
+  margin:0 44px 88px;
+  background:#f0e4e7;
+  color:var(--ink);
+  border:1px solid #ddc9d0;
+  padding:38px 46px;
+  min-height:0;
+  box-shadow:none;
+}
+.final-cta p{color:var(--muted);margin-bottom:0}
+.final-cta .eyebrow{color:var(--rose-dark)}
+.final-actions{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  flex:0 0 370px;
+}
+.final-actions .btn{
+  width:100%;
+  min-height:58px;
+  white-space:nowrap;
+}
+.final-cta .btn-outline{
+  color:var(--rose-dark);
+  border-color:#b9919f;
+  background:rgba(255,255,255,.35);
+}
+
+@media(max-width:900px){
+  .final-cta{align-items:flex-start}
+  .final-actions{flex-basis:320px}
+}
+@media(max-width:720px){
+  .image-card-mat img{height:230px}
+  .final-cta{
+    margin:0 20px 100px;
+    padding:30px 24px;
+  }
+  .final-actions{
+    display:grid;
+    grid-template-columns:1fr;
+    width:100%;
+    margin-top:22px;
+  }
+  .final-actions .btn{width:100%;white-space:normal}
+}
