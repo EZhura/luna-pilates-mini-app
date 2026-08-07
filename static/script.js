@@ -11,9 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
             customDateLabel: "Выберите дату в календаре",
             calendarFieldTitle: "Календарь",
             calendarFieldHint: "Нажмите, чтобы выбрать дату",
-            heroKicker: "Pilates & mindful movement",
-            heroTitle: "Баланс.\nМягкая сила.\nЛёгкость движения.",
-            heroText: "Студия пилатеса и осознанного движения для тела и души.",
+            heroKicker: "Pilates for every body",
+            heroTitle: "Двигайся с мягкой силой.",
+            heroText: "Осознанное движение, точная работа с телом и спокойный ритм — от первого занятия до устойчивого результата.",
             trialBtn: "Записаться на пробное занятие",
             consultBtn: "Получить консультацию",
 
@@ -118,9 +118,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             calendarFieldTitle: "Calendar",
             calendarFieldHint: "Tap to choose a date",
-            heroKicker: "Pilates & mindful movement",
-            heroTitle: "Balance.\nSoft strength.\nEase of movement.",
-            heroText: "A pilates and mindful movement studio for body and soul.",
+            heroKicker: "Pilates for every body",
+            heroTitle: "Move with calm strength.",
+            heroText: "Mindful movement, precise body work and a calm rhythm — from your first class to a stronger routine.",
             trialBtn: "Book a trial class",
             consultBtn: "Get a consultation",
 
