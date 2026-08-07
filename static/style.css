@@ -151,3 +151,9 @@
   .auto-trainer{padding:14px}
   .choice-grid span,.goal-row span,.date-chips span,.time-chips span{padding:10px 12px}
 }
+
+/* v6 localization / FAQ polish */
+.faq-grid{align-items:start}
+.faq-grid details{align-self:start;height:auto;min-height:0}
+.faq-grid details[open] p{margin-bottom:0}
+.direction-details p{margin-top:10px}

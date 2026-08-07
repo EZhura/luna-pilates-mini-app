@@ -31,6 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
             navStudio: "Студия",
             trialBtn: "Записаться на пробное занятие",
             consultBtn: "Получить консультацию",
+            monShort: "Пн", tueShort: "Вт", wedShort: "Ср", thuShort: "Чт", friShort: "Пт", satShort: "Сб", sunShort: "Вс", dayOff: "Выходной",
+            experienceLabel: "Опыт:",
+            annaName: "Анна", annaExperience: "6 лет", annaBio: "Reformer, осанка, сила, мягкое восстановление.",
+            sofiaName: "София", sofiaExperience: "5 лет", sofiaBio: "Mat Pilates, stretch, занятия для начинающих.",
+            mariaName: "Мария", mariaExperience: "7 лет", mariaBio: "Rehabilitation, core, индивидуальный подход.",
+            elenaName: "Елена", elenaExperience: "8 лет", elenaBio: "Mobility, дыхание, anti-stress практики.",
+            namePlaceholder: "Анна", phonePlaceholder: "+995...", contactPlaceholder: "@username или номер", commentPlaceholder: "Расскажите о себе, если есть особенности", questionPlaceholder: "Например: какое направление лучше выбрать новичку?", dateAriaLabel: "Выберите дату",
 
             scheduleKicker: "Schedule",
             scheduleTitle: "Расписание",
@@ -157,6 +164,13 @@ document.addEventListener("DOMContentLoaded", function () {
             navStudio: "Studio",
             trialBtn: "Book a trial class",
             consultBtn: "Get a consultation",
+            monShort: "Mon", tueShort: "Tue", wedShort: "Wed", thuShort: "Thu", friShort: "Fri", satShort: "Sat", sunShort: "Sun", dayOff: "Day off",
+            experienceLabel: "Experience:",
+            annaName: "Anna", annaExperience: "6 years", annaBio: "Reformer, posture, strength and gentle recovery.",
+            sofiaName: "Sofia", sofiaExperience: "5 years", sofiaBio: "Mat Pilates, stretching and beginner-friendly classes.",
+            mariaName: "Maria", mariaExperience: "7 years", mariaBio: "Rehabilitation, core and an individual approach.",
+            elenaName: "Elena", elenaExperience: "8 years", elenaBio: "Mobility, breathing and anti-stress practices.",
+            namePlaceholder: "Anna", phonePlaceholder: "+995...", contactPlaceholder: "@username or phone number", commentPlaceholder: "Tell us about any needs or limitations", questionPlaceholder: "For example: which class is best for a beginner?", dateAriaLabel: "Choose a date",
 
             scheduleKicker: "Schedule",
             scheduleTitle: "Schedule",
@@ -271,6 +285,16 @@ document.addEventListener("DOMContentLoaded", function () {
             if (translations[lang][key]) {
                 element.textContent = translations[lang][key];
             }
+        });
+
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+            const key = element.getAttribute("data-i18n-placeholder");
+            if (translations[lang][key]) element.placeholder = translations[lang][key];
+        });
+
+        document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+            const key = element.getAttribute("data-i18n-aria-label");
+            if (translations[lang][key]) element.setAttribute("aria-label", translations[lang][key]);
         });
 
         document.querySelectorAll(".lang-btn").forEach((button) => {
@@ -467,7 +491,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateAutoTrainer() {
         const rule = bookingRules[getSelectedDirection()];
         bookingTrainer.value = rule.trainer;
-        autoTrainerName.textContent = rule.trainer;
+        const trainerDisplayNames = {
+            "Анна": translations[currentLang].annaName,
+            "София": translations[currentLang].sofiaName,
+            "Мария": translations[currentLang].mariaName,
+            "Елена": translations[currentLang].elenaName
+        };
+        autoTrainerName.textContent = trainerDisplayNames[rule.trainer] || rule.trainer;
         autoTrainerMeta.textContent = rule.meta[currentLang];
     }
 
