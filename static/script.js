@@ -121,6 +121,16 @@ document.addEventListener("DOMContentLoaded", function () {
             calendarSmall: "другую дату",
             formName: "Имя",
             formPhone: "Телефон",
+            notificationTitle: "Куда отправить подтверждение и напоминание?",
+            notificationEmailLabel: "Email",
+            notificationEmailPlaceholder: "name@example.com",
+            notificationEmailHint: "На этот адрес придут подтверждение и напоминание.",
+            notificationWhatsappLabel: "Номер WhatsApp",
+            notificationWhatsappPlaceholder: "+995...",
+            notificationWhatsappHint: "Сохраним номер для уведомлений через WhatsApp.",
+            notificationTelegramLabel: "Telegram",
+            notificationTelegramPlaceholder: "@username",
+            notificationTelegramHint: "Сохраним Telegram-контакт. Автоматические уведомления подключим отдельно.",
             goalTitle: "Для чего вам нужны занятия?",
             goalPosture: "Улучшить осанку",
             goalFlex: "Развить гибкость",
@@ -254,6 +264,16 @@ document.addEventListener("DOMContentLoaded", function () {
             calendarSmall: "another date",
             formName: "Name",
             formPhone: "Phone",
+            notificationTitle: "Where should we send confirmation and reminders?",
+            notificationEmailLabel: "Email",
+            notificationEmailPlaceholder: "name@example.com",
+            notificationEmailHint: "Confirmation and reminders will be sent to this address.",
+            notificationWhatsappLabel: "WhatsApp number",
+            notificationWhatsappPlaceholder: "+995...",
+            notificationWhatsappHint: "We’ll save this number for WhatsApp notifications.",
+            notificationTelegramLabel: "Telegram",
+            notificationTelegramPlaceholder: "@username",
+            notificationTelegramHint: "We’ll save your Telegram contact. Automatic Telegram notifications can be connected separately.",
             goalTitle: "What would you like classes to help with?",
             goalPosture: "Improve posture",
             goalFlex: "Build flexibility",
@@ -304,6 +324,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (typeof refreshBookingLogic === "function" && document.getElementById("bookingForm")) {
             refreshBookingLogic();
         }
+
+        if (typeof updateNotificationField === "function" && document.getElementById("notificationContact")) {
+            updateNotificationField();
+        }
     }
 
     document.querySelectorAll(".lang-btn").forEach((button) => {
@@ -336,6 +360,34 @@ document.addEventListener("DOMContentLoaded", function () {
     const customDate = document.getElementById("customDate");
     const customDateRow = document.getElementById("customDateRow");
     const dateValidation = document.getElementById("dateValidation");
+    const notificationContact = document.getElementById("notificationContact");
+    const notificationContactLabel = document.getElementById("notificationContactLabel");
+    const notificationContactHint = document.getElementById("notificationContactHint");
+
+    function updateNotificationField() {
+        const channel = form.querySelector('input[name="notification_channel"]:checked')?.value || "email";
+
+        if (channel === "email") {
+            notificationContact.type = "email";
+            notificationContactLabel.textContent = translations[currentLang].notificationEmailLabel;
+            notificationContact.placeholder = translations[currentLang].notificationEmailPlaceholder;
+            notificationContactHint.textContent = translations[currentLang].notificationEmailHint;
+        } else if (channel === "whatsapp") {
+            notificationContact.type = "tel";
+            notificationContactLabel.textContent = translations[currentLang].notificationWhatsappLabel;
+            notificationContact.placeholder = translations[currentLang].notificationWhatsappPlaceholder;
+            notificationContactHint.textContent = translations[currentLang].notificationWhatsappHint;
+        } else {
+            notificationContact.type = "text";
+            notificationContactLabel.textContent = translations[currentLang].notificationTelegramLabel;
+            notificationContact.placeholder = translations[currentLang].notificationTelegramPlaceholder;
+            notificationContactHint.textContent = translations[currentLang].notificationTelegramHint;
+        }
+    }
+
+    form.querySelectorAll('input[name="notification_channel"]').forEach((input) => {
+        input.addEventListener("change", updateNotificationField);
+    });
 
     const bookingRules = {
         "Reformer Pilates": {
@@ -590,7 +642,8 @@ document.addEventListener("DOMContentLoaded", function () {
             time: formData.get("time"),
             name: formData.get("name"),
             phone: formData.get("phone"),
-            contact: formData.get("contact"),
+            notification_channel: formData.get("notification_channel"),
+            notification_contact: formData.get("notification_contact"),
             goal: formData.get("goal"),
             comment: formData.get("comment")
         };
@@ -610,7 +663,10 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => {
                 form.reset();
                 form.querySelector('input[name="direction"][value="Reformer Pilates"]').checked = true;
+                const emailChannel = form.querySelector('input[name="notification_channel"][value="email"]');
+                if (emailChannel) emailChannel.checked = true;
                 refreshBookingLogic();
+                updateNotificationField();
                 closeModal();
                 status.textContent = "";
             }, 1400);

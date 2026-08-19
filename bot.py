@@ -96,19 +96,15 @@ def get_bookings_worksheet():
 def save_booking_to_sheets(
     booking_id: str,
     name: str,
+    email: str,
     phone: str,
+    notification_channel: str,
     direction: str,
     date: str,
     time: str,
     created_at: str,
 ):
-    """
-    Save a new booking request to Google Sheets.
-
-    For now chat_id and email remain empty because the current booking form
-    does not yet send those values. We will connect a real Telegram chat_id
-    in the next step of the reminders workflow.
-    """
+    """Save a new booking request to Google Sheets."""
     worksheet = get_bookings_worksheet()
 
     worksheet.append_row(
@@ -116,9 +112,9 @@ def save_booking_to_sheets(
             booking_id,
             name,
             "",  # chat_id
-            "",  # email
+            email,
             phone,
-            "pending",
+            notification_channel,
             direction,
             date,
             time,
@@ -157,7 +153,8 @@ def booking_request():
 
     name = safe_text(data.get("name"))
     phone = safe_text(data.get("phone"))
-    contact = safe_text(data.get("contact"))
+    notification_channel = safe_text(data.get("notification_channel")).lower()
+    notification_contact = safe_text(data.get("notification_contact"))
     direction = safe_text(data.get("direction"))
     trainer = safe_text(data.get("trainer"))
     date = safe_text(data.get("date"))
@@ -165,13 +162,19 @@ def booking_request():
     goal = safe_text(data.get("goal"))
     comment = safe_text(data.get("comment"))
 
-    if not name or not contact:
+    allowed_channels = {"email", "whatsapp", "telegram"}
+
+    if not name or notification_channel not in allowed_channels or not notification_contact:
         return jsonify(
             {
                 "ok": False,
-                "message": "Please add your name and Telegram / WhatsApp.",
+                "message": "Please add your name and choose a notification contact.",
             }
         ), 400
+
+    email = notification_contact if notification_channel == "email" else ""
+    if notification_channel == "whatsapp" and not phone:
+        phone = notification_contact
 
     created_at = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
     booking_id = f"LUNA-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}-{uuid.uuid4().hex[:6].upper()}"
@@ -180,7 +183,9 @@ def booking_request():
         save_booking_to_sheets(
             booking_id=booking_id,
             name=name,
+            email=email,
             phone=phone,
+            notification_channel=notification_channel,
             direction=direction,
             date=date,
             time=time,
@@ -198,7 +203,8 @@ def booking_request():
 <b>Booking ID:</b> {booking_id}
 <b>Name:</b> {name}
 <b>Phone:</b> {phone or "—"}
-<b>Telegram / WhatsApp:</b> {contact}
+<b>Notification channel:</b> {notification_channel}
+<b>Notification contact:</b> {notification_contact}
 
 <b>Direction:</b> {direction or "Not selected"}
 <b>Instructor:</b> {trainer or "Not selected"}
